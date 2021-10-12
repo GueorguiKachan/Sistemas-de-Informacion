@@ -8,12 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style type="text/css">body{background-color:#34495E;}</style>
 <style>
-form.jugador {
-	
-}
-*{
-	box-sizing: border-box;
-}
+
 form.buscar button{
 	
   float: right;
@@ -45,31 +40,39 @@ table {
 
 <div class="cabecera">
   <div class="row">
-	  
+	  	<div class="col">
 	  	<img alt="Imagen" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2SeLFs7dKpRTLT5ljvM8vY0V0mte9-lHD_LQuJt5YcIWi9xI&s" style="dispaly:flex;margin:0px 0px 20px 20px;width:170px; heigth:80px;">
-	  
-	 
+	  	</div>
+	 	<div class="col d-flex justify-content-center" >
 	  	<form name="jugador" action="procesarForm.do" method="get" style="display:flex;margin:auto;max-width:210px;height:60px">
 	  		<input type="text" name="buscar" placeholder="Introduzca un jugador" size="20">
 	 		<button type="submit"><i class="fa fa-angle-double-right"></i></button>
 	 	</form>
+	 	</div>
+	 	<div class="col d-flex justify-content-center" >
 	 	<button type="button" class="btn btn-primary btn-sm" style="background-color:#117A65; color:white; margin:auto;width:170px; height:60px">Iniciar sesion</button>
-	 
+	 	</div>
  </div>
  <div id="buscadores">
  	<div class="row">
- 	<form name="buscar" action="procesarForm.do" method="get" style="margin:auto;display:flex;max-width:210px">
+ 	<div class="col">
+ 	<form name="buscar" action="procesarForm.do" method="get" style="display:flex">
 	  		<input type="text" name="buscar"  placeholder="Introduzca un grupo" size="17">
 	 		<button type="submit"><i class="fa fa-angle-double-right"></i></button>
 	</form>
-	<form name="buscar" action="procesarForm.do" method="get" style="margin:auto;display:flex;max-width:210px">
+	</div>
+	<div class="col">
+	<form name="buscar" action="procesarForm.do" method="get" style="display:flex" >
 	  		<input type="text" name="buscar"  placeholder="Introduzca un equipo" size="17">
 	 		<button type="submit"><i class="fa fa-angle-double-right"></i></button>
 	</form>
-	<form name="buscar" action="procesarForm.do"  method="get" style="margin:auto;display:flex;max-width:210px">
+	</div>
+	<div class="col">
+	<form name="buscar" action="procesarForm.do"  method="get" style="display:flex">
 	  		<input type="text" name="buscar"  placeholder="Introduzca un jugador" size="17">
 	 		<button type="submit"><i class="fa fa-angle-double-right"></i></button>
 	</form>
+	</div>
 	</div>
  </div>
 </div>
