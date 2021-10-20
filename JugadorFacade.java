@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import es.unizar.sisinf.grp1.db.PoolConnectionManager;
 
-public class UserFacade {
+public class JugadorFacade {
 	
 	private static String countByUserName = "SELECT count(*) cuenta FROM users WHERE username = ?";
 	private static String findByUserName = "SELECT * FROM users WHERE username = ?";
