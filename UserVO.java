@@ -19,10 +19,9 @@ public class UserVO {
 	 * @param userName
 	 * @param password
 	 */
-	public UserVO(String userName, String password, Date lastLogin, boolean esAdmin) {
+	public UserVO(String userName, String password, boolean esAdmin) {
 		this.userName = userName;
 		this.password = password;
-		this.lastLogin = lastLogin;
 		this.esAdmin = esAdmin;
 	}
 
