@@ -1,7 +1,7 @@
 CREATE TABLE jugadores(
   id Bigint PRIMARY KEY,
   nombre VARCHAR(100),
-  edad INT NOT NULL,
+  nacido INT NOT NULL,
   rojas INT,
   amarillas INT,
   pJugados INT,
@@ -44,6 +44,7 @@ CREATE TABLE jugadores(
   
  CREATE TABLE usuarios(
   nombre VARCHAR(100) PRIMARY KEY,
-  password VARCHAR(50)
+  password VARCHAR(50),
+esAdmin boolean
   );
   
