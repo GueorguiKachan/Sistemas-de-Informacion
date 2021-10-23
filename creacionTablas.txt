@@ -1,0 +1,49 @@
+CREATE TABLE jugadores(
+  id Bigint PRIMARY KEY,
+  nombre VARCHAR(100),
+  edad INT NOT NULL,
+  rojas INT,
+  amarillas INT,
+  pJugados INT,
+  pTitular INT,
+  goles INT,
+  FOREIGN KEY (equipo) REFERENCES equipos (nombre)
+  );
+  
+ CREATE TABLE equipos(
+  nombre VARCHAR(100) PRIMARY KEY,
+  numJugadores INT,
+  precioEnt INT,
+  estadio VARCHAR(100),
+  capacidad VARCHAR(100),
+  tipCesped VARCHAR(100),
+  FOREIGN KEY (grupo) REFERENCES grupos(nombre)
+  );
+  
+    
+ CREATE TABLE grupos(
+  nombre VARCHAR(100) PRIMARY KEY,
+  numEquipos INT
+  );
+  
+ CREATE TABLE solicitudJugador(
+  id INT PRIMARY KEY,
+  campo VARCHAR(100)
+  valor VARCHAR(500),
+  FOREIGN KEY (nomUser) REFERENCES usuarios(nombre),
+  FOREIGN KEY (codJugador) REFERENCES jugadores(nombre)
+  );
+  
+ CREATE TABLE solicitudEquipo(
+  id INT PRIMARY KEY,
+  campo VARCHAR(100)
+  valor VARCHAR(500),
+  FOREIGN KEY (nomUser) REFERENCES usuarios(nombre),
+  FOREIGN KEY (codJugador) REFERENCES jugadores(nombre)
+  );
+  
+ CREATE TABLE usuarios(
+  nombre VARCHAR(100) PRIMARY KEY,
+  password VARCHAR(50)
+  );
+  
