@@ -1,3 +1,19 @@
+CREATE TABLE grupos(
+  nombre VARCHAR(100) PRIMARY KEY,
+  numEquipos INT
+  );
+ 
+ CREATE TABLE equipos(
+  nombre VARCHAR(100) PRIMARY KEY,
+  numJugadores INT,
+  precioEnt INT,
+  estadio VARCHAR(100),
+  capacidad VARCHAR(100),
+  tipCesped VARCHAR(100),
+  grupo VARCHAR(100),
+  FOREIGN KEY (grupo) REFERENCES grupos(nombre)
+  );
+
 CREATE TABLE jugadores(
   id Bigint PRIMARY KEY,
   nombre VARCHAR(100),
@@ -7,44 +23,33 @@ CREATE TABLE jugadores(
   pJugados INT,
   pTitular INT,
   goles INT,
+  equipo VARCHAR(100),
   FOREIGN KEY (equipo) REFERENCES equipos (nombre)
   );
-  
- CREATE TABLE equipos(
-  nombre VARCHAR(100) PRIMARY KEY,
-  numJugadores INT,
-  precioEnt INT,
-  estadio VARCHAR(100),
-  capacidad VARCHAR(100),
-  tipCesped VARCHAR(100),
-  FOREIGN KEY (grupo) REFERENCES grupos(nombre)
-  );
-  
-    
- CREATE TABLE grupos(
-  nombre VARCHAR(100) PRIMARY KEY,
-  numEquipos INT
-  );
-  
- CREATE TABLE solicitudJugador(
-  id INT PRIMARY KEY,
-  campo VARCHAR(100)
-  valor VARCHAR(500),
-  FOREIGN KEY (nomUser) REFERENCES usuarios(nombre),
-  FOREIGN KEY (codJugador) REFERENCES jugadores(nombre)
-  );
-  
- CREATE TABLE solicitudEquipo(
-  id INT PRIMARY KEY,
-  campo VARCHAR(100)
-  valor VARCHAR(500),
-  FOREIGN KEY (nomUser) REFERENCES usuarios(nombre),
-  FOREIGN KEY (codJugador) REFERENCES jugadores(nombre)
-  );
-  
+ 
  CREATE TABLE usuarios(
   nombre VARCHAR(100) PRIMARY KEY,
   password VARCHAR(50),
 esAdmin boolean
   );
+ 
   
+ CREATE TABLE solicitudJugador(
+  id INT PRIMARY KEY,
+  campo VARCHAR(100),
+  valor VARCHAR(500),
+  nomUser VARCHAR(100),
+  codJugador Bigint,
+  FOREIGN KEY (nomUser) REFERENCES usuarios(nombre),
+  FOREIGN KEY (codJugador) REFERENCES jugadores(id)
+  );
+  
+ CREATE TABLE solicitudEquipo(
+  id INT PRIMARY KEY,
+  campo VARCHAR(100),
+  valor VARCHAR(500),
+  nomUser VARCHAR(100),
+  codEquipo VARCHAR(100),
+  FOREIGN KEY (nomUser) REFERENCES usuarios(nombre),
+  FOREIGN KEY (codEquipo) REFERENCES equipos(nombre)
+  );
