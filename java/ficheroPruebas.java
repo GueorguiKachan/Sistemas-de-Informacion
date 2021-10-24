@@ -2,7 +2,8 @@ import es.unizar.sisinf.grp1.model.EquipoFacade;
 import es.unizar.sisinf.grp1.model.EquipoVO;
 import es.unizar.sisinf.grp1.model.JugadorFacade;
 import es.unizar.sisinf.grp1.model.JugadorVO;
-
+import es.unizar.sisinf.grp1.model.UserFacade;
+import es.unizar.sisinf.grp1.model.UserVO;
 
 public class Test extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -20,8 +21,8 @@ public class Test extends HttpServlet {
 	 */
 	protected void probarEquipo() {
 		
-		EquipoFacade facade = new EquipoFacade();
-		EquipoVO equipo = facade.getTeam("El Gancho");
+		UserFacade facade = new UserFacade();
+		UserVO user = facade.getUser("Gueorgui");
 		
 		System.out.println("equipo = " + equipo.getTeamName());
 		System.out.println("estadio = " + equipo.getStadium() + " con capacidad " + equipo.getCapacidad() + " y cesped " + equipo.getCesped());
@@ -46,7 +47,22 @@ public class Test extends HttpServlet {
 		System.out.println("grupo = " + jugador.getRojas());
 		System.out.println("grupo = " + jugador.getAmarillas());
 		System.out.println("grupo = " + jugador.getEquipo());
+	}
+
+	protected void probarUsuario() {
 		
+		UserFacade facade = new UserFacade();
+		UserVO user = facade.getUser("telleria@unizar.es");
+		
+		System.out.println("username = " + user.getUserName());
+		System.out.println("password = " + user.getPassword());
+		
+		if(user.isEsAdmin()){
+			System.out.println("El usuario es admin");
+		}
+		else{
+			System.out.println("El usuario no es admin");
+		}
 	
 	}
 	/**
