@@ -7,7 +7,7 @@ import java.util.Date;
  * @author sisinf
  *
  */
-public class solicitudJugadorVO {
+public class SolicitudJugadorVO {
 	private Integer id;
 	private String campo;
 	private String valor;
@@ -21,7 +21,7 @@ public class solicitudJugadorVO {
 	 */
 	
 	
-	public solicitudJugadorVO(Integer id, String campo, String valor, String nomUser, Integer codJugador) {
+	public SolicitudJugadorVO(Integer id, String campo, String valor, String nomUser, Integer codJugador) {
 		super();
 		this.id = id;
 		this.campo = campo;
