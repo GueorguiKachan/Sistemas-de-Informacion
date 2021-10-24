@@ -4,25 +4,17 @@ import es.unizar.sisinf.grp1.model.JugadorFacade;
 import es.unizar.sisinf.grp1.model.JugadorVO;
 import es.unizar.sisinf.grp1.model.UserFacade;
 import es.unizar.sisinf.grp1.model.UserVO;
+import es.unizar.sisinf.grp1.model.SolicitudEquipoFacade;
+import es.unizar.sisinf.grp1.model.SolicitudEquipoVO;
+import es.unizar.sisinf.grp1.model.SolicitudJugadorFacade;
+import es.unizar.sisinf.grp1.model.SolicitudJugadorVO;
 
-public class Test extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Test() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+public class Main  {
+	
 	protected void probarEquipo() {
 		
 		UserFacade facade = new UserFacade();
-		UserVO user = facade.getUser("Gueorgui");
+		UserVO user = facade.getUser("El Gancho");
 		
 		System.out.println("equipo = " + equipo.getTeamName());
 		System.out.println("estadio = " + equipo.getStadium() + " con capacidad " + equipo.getCapacidad() + " y cesped " + equipo.getCesped());
@@ -52,7 +44,7 @@ public class Test extends HttpServlet {
 	protected void probarUsuario() {
 		
 		UserFacade facade = new UserFacade();
-		UserVO user = facade.getUser("telleria@unizar.es");
+		UserVO user = facade.getUser("Gueorgui");
 		
 		System.out.println("username = " + user.getUserName());
 		System.out.println("password = " + user.getPassword());
@@ -65,12 +57,30 @@ public class Test extends HttpServlet {
 		}
 	
 	}
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
+	protected void probarSolicitudEquipo() {
+		
+		SolicitudEquipoFacade facade = new SolicitudEquipoFacade();
+		SolicitudEquipoVO solEquipo = facade.getSolicitud(1);
+
+	System.out.println("equipo = " + solEquipo.getId());
+	System.out.println("campo = " + solEquipo.getCampo());
+	System.out.println("valor = " + solEquipo.getValor());
+	System.out.println("numero usuario = " + solEquipo.getNomUser());
+	System.out.println("codigo del equipo = " + solEquipo.getCodEquipo());
+	
 	}
 
+	protected void probarSolicitudJugador() {
+		
+		SolicitudJugadorFacade facade = new SolicitudJugadorFacade();
+		SolicitudJugadorVO solJugador = facade.getSolicitud(1);
+
+	System.out.println("equipo = " + solJugador.getId());
+	System.out.println("campo = " + solJugador.getCampo());
+	System.out.println("valor = " + solJugador.getValor());
+	System.out.println("numero usuario = " + solJugador.getNomUser());
+	System.out.println("codigo del equipo = " + solJugador.getCodJugador());
+	
+	}
 }
