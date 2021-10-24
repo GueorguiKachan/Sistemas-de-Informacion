@@ -71,7 +71,60 @@ public class UserFacade {
 		
 		return result;
 	}
+	
+	public boolean esAdmin (UserVO user) {
+		boolean result = false;
+		Connection conn = null;
 		
+		try {
+			// Abrimos la conexiÃ³n e inicializamos los parÃ¡metros 
+			conn = PoolConnectionManager.getConnection(); 
+			PreparedStatement countPs = conn.prepareStatement(countByUserName);
+			PreparedStatement findPs = conn.prepareStatement(findByUserName);
+			PreparedStatement updatePs = conn.prepareStatement(updateDate);
+			countPs.setString(1, user.getUserName());
+			findPs.setString(1, user.getUserName());
+			updatePs.setString(1, user.getUserName());
+			
+			// Ejecutamos la consulta 
+			ResultSet findRs = findPs.executeQuery();
+			ResultSet countRs = countPs.executeQuery();
+			
+			countRs.next();
+			int n = countRs.getInt(1);
+			System.out.println("Numero de registros: " + n);
+			
+			
+			// Leemos resultados 
+			if(n == 1) {
+				// Vemos si es admin
+				findRs.next();
+				Boolean esAdmin = findRs.getBoolean("esAdmin");
+				if (esAdmin) {
+					result = true;
+				}
+			} else { 
+				result = false;  
+			} 
+			
+			// liberamos los recursos utilizados
+			findRs.close();
+			findPs.close();
+			countRs.close();
+			countPs.close();
+			updatePs.close();
+
+		} catch(SQLException se) {
+			se.printStackTrace();  
+		
+		} catch(Exception e) {
+			e.printStackTrace(System.err); 
+		} finally {
+			PoolConnectionManager.releaseConnection(conn); 
+		}
+		
+		return result;
+	}
 	
 	public UserVO getUser(String username) {
 		Connection conn = null;
