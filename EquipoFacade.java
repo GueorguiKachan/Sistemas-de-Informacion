@@ -9,8 +9,6 @@ import es.unizar.sisinf.grp1.db.PoolConnectionManager;
 
 public class equipoFacade {
 	private static String countByUserName = "SELECT count(*) cuenta FROM users WHERE username = ?";
-	private static String findByUserName = "SELECT * FROM users WHERE username = ?";
-	private static String updateDate = "UPDATE users set last_login = current_timestamp where username = ?";
 	
 	public String getTeam(String teamName) {
 		Connection conn = null;
