@@ -9,6 +9,7 @@ import java.util.Date;
  *
  */
 public class JugadorVO {
+	private Integer id;
 	private Integer p_jugados;
 	private Integer p_titular;
 	private String nombre;
@@ -21,8 +22,9 @@ public class JugadorVO {
 	/**
 	 * Constructor
 	 */
-	public JugadorVO(Integer p_jugados, Integer p_titular, String nombre, Integer goles, Integer nacido, Integer rojas,
+	public JugadorVO(Integer id, Integer p_jugados, Integer p_titular, String nombre, Integer goles, Integer nacido, Integer rojas,
 			Integer amarillas, String equipo) {
+		this.id = id;
 		this.p_jugados = p_jugados;
 		this.p_titular = p_titular;
 		this.nombre = nombre;
@@ -33,6 +35,14 @@ public class JugadorVO {
 		this.equipo = equipo;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 	public Integer getP_jugados() {
 		return p_jugados;
 	}
