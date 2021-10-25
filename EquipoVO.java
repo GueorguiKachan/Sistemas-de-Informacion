@@ -1,15 +1,14 @@
 package es.unizar.sisinf.grp1.model;
 
-import java.util.Date;
 
 	/**
 	 * tabla users
 	 * @author sisinf
 	 *
 	 */
-	public class equipoVO {
+	public class EquipoVO {
 		
-		public equipoVO(String teamName, String stadium, Integer precio, Integer numJugadores, String grupo,
+		public EquipoVO(String teamName, String stadium, Integer precio, Integer numJugadores, String grupo,
 				Integer capacidad, String cesped) {
 			super();
 			this.teamName = teamName;
