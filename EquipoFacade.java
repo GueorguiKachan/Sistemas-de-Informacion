@@ -24,8 +24,8 @@ public class EquipoFacade {
 			rset.next(); // Next mueve el cursor una fila adelante de su posición actual
 			
 			//getString-getInteger devuelven el valor que haya en la columna indicada o bien por un número o bien por su nombre
-			equipo = new EquipoVO(rset.getString("nombre"),rset.getString("estadio"),rset.getInteger("precioEnt"),
-								rset.getInteger("numJugadores"),rset.getString("grupo"),rset.getInteger("capacidad"),rset.getString("tipoCesped"));
+			equipo = new EquipoVO(rset.getString("nombre"),rset.getString("estadio"),rset.getInt("precioEnt"),
+								rset.getInt("numJugadores"),rset.getString("grupo"),rset.getInt("capacidad"),rset.getString("tipoCesped"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
