@@ -1,8 +1,5 @@
 package es.unizar.sisinf.grp1.model;
 
-import java.util.Calendar;
-import java.util.Date;
-
 /**
  * tabla users
  * @author Ernesto Bielsa Gracia
