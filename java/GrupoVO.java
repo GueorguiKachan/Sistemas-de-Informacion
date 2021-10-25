@@ -1,5 +1,6 @@
 package es.unizar.sisinf.grp1.model;
 
+
 /**
  * tabla users
  * @author Ernesto Bielsa Gracia

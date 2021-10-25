@@ -10,7 +10,7 @@ import es.unizar.sisinf.grp1.db.PoolConnectionManager;
 public class JugadorFacade {
 	private static String countByUserName = "SELECT count(*) cuenta FROM users WHERE username = ?";
 	
-	public JugadorVO getPlayer(String playerName) {
+	public JugadorVO getPlayer(Integer id) {
 		Connection conn = null;
 		JugadorVO jugador = null;
 
@@ -19,7 +19,7 @@ public class JugadorFacade {
 			conn = PoolConnectionManager.getConnection(); 
 			
 			PreparedStatement ps = conn.prepareStatement("Select * from jugadores where nombre= ?");
-			ps.setString(1, playerName); // setString asigna el valor del 2º argumento al parámetro que está en la posición del 1º argumento. Sustituye los ? 
+			ps.setString(1, id.toString()); // setString asigna el valor del 2º argumento al parámetro que está en la posición del 1º argumento. Sustituye los ? 
 			ResultSet rset = ps.executeQuery();
 			rset.next(); // Next mueve el cursor una fila adelante de su posición actual
 			

@@ -18,7 +18,7 @@ public class Main  {
 	protected void probarEquipo() {
 		
 		EquipoFacade facade = new EquipoFacade();
-		EquipoVO equipo = facade.getTeam("El Gancho");
+		EquipoVO equipo = facade.getTeam("El Gancho C.F.");
 		
 		System.out.println("equipo = " + equipo.getTeamName());
 		System.out.println("estadio = " + equipo.getStadium() + " con capacidad " + equipo.getCapacidad() + " y cesped " + equipo.getCesped());
@@ -32,7 +32,7 @@ public class Main  {
 	protected void probarJugador() {
 		
 		JugadorFacade facade = new JugadorFacade();
-		JugadorVO jugador = facade.getPlayer("Ernesto Bielsa");
+		JugadorVO jugador = facade.getPlayer(1);
 
 		System.out.println("id = " + jugador.getId());
 		System.out.println("estadio = " + jugador.getP_jugados());
@@ -48,7 +48,7 @@ public class Main  {
 	protected void probarUsuario() {
 		
 		UserFacade facade = new UserFacade();
-		UserVO user = facade.getUser("Gueorgui");
+		UserVO user = facade.getUser("Gueorgui Alexandrovitch Kachan");
 		
 		System.out.println("username = " + user.getUserName());
 		System.out.println("password = " + user.getPassword());
