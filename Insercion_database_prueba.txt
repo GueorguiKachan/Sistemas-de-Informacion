@@ -1,0 +1,15 @@
+insert into grupos values ('Grupo 2');
+
+insert into equipos values ('El Gancho C.F.','0','0','NUEVO RANILLAS-C.M.F.','','Artificial','Grupo 2');
+
+insert into jugadores values ('1','Ernesto Bielsa Gracia','2001','0','1','7','7','0','El Gancho C.F.');
+
+update equipos e1 set numJugadores = (select count(*) from jugadores where equipo= e1.nombre);
+
+update grupos g1 set numEquipos = (select count(*) from equipos where grupo = g1.nombre);
+
+insert into usuarios values ('Gueorgui Alexandrovitch Kachan','indefinido','true');
+
+insert into solicitudEquipo values ('1','capacidad','300','Gueorgui Alexandrovitch Kachan','El Gancho C.F.');
+
+insert into solicitudJugador values ('1','goles','3','Gueorgui Alexandrovitch Kachan','1');
