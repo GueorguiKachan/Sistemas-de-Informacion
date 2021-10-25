@@ -4,9 +4,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	.cabecera{padding:20px;}
+	.cabecera{padding:20px;border:1px solid black;border-bottom:none}
 	table,th,td{border:1px solid black;padding:15px 0;}
 	table{width:100%;border-collapse:collapse;}
+	a{text-decoration:none;}
+	img{max-width:20px; height:auto;}
+	th{height:20px;}
 </style>
 </head>
 <body>
@@ -17,23 +20,23 @@
 	<div class="table-responsive-sm">
 		<table class="table-striped">
 			<tr>
-				<th>Nombre<img src="" alt="ordenar" style="float:right;"></img></th>
-				<th>Equipo<img src="" alt="ordenar" style="float:right;"></th>
-				<th>Grupo<img src="" alt="ordenar" style="float:right;"></th>
-				<th>P.Jugados<img src="" alt="ordenar" style="float:right;"></th>
-				<th>P.Titular<img src="" alt="ordenar" style="float:right;"></th>
-				<th><img src="goles.png" alt="Goles"></img><img src="" alt="ordenar" style="float:right;"></th>
+				<th>Nombre<img src="ordenar.png" alt="ordenar" style="float:right;" width=auto ></th>
+				<th>Equipo<img src="ordenar.png" alt="ordenar" style="float:right;" width=auto ></th>
+				<th>Grupo<img src="ordenar.png" alt="ordenar" style="float:right;" width=auto ></th>
+				<th>P.Jugados<img src="ordenar.png" alt="ordenar" style="float:right;" width=auto ></th>
+				<th>P.Titular<img src="ordenar.png" alt="ordenar" style="float:right;" width=auto ></th>
+				<th><img src="goles.png" alt="Goles"></img><img src="ordenar.png" alt="ordenar" style="float:right;" width="40" height="40"></th>
 				<th></th>
 			</tr>
 			<tbody>
 				<tr>
-					<td>Enrique Gallego</td>
+					<td id="j1">Enrique Gallego</td>
 					<td>Alfinden</td>
 					<td>Grupo 2</td>
 					<td>8</td>
 					<td>8</td>
 					<td>10</td>
-					<td><img src="editar.png" alt="Editar"></img></td>
+					<td><a href=""><img src="editar.png" alt="Editar"></img></a></td>
 					
 				</tr>
 				<tr>
@@ -43,7 +46,7 @@
 					<td>6</td>
 					<td>6</td>
 					<td>7</td>
-					<td><img src="editar.png" alt="Editar"></img></td>
+					<td><a href=""><img src="editar.png" alt="Editar"></img></a></td>
 					
 				</tr>
 			</tbody>
