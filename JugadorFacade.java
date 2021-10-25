@@ -7,12 +7,12 @@ import java.sql.SQLException;
 
 import es.unizar.sisinf.grp1.db.PoolConnectionManager;
 
-public class jugadorFacade {
+public class JugadorFacade {
 	private static String countByUserName = "SELECT count(*) cuenta FROM users WHERE username = ?";
 	
-	public String getPlayer(String playerName) {
+	public JugadorVO getPlayer(String playerName) {
 		Connection conn = null;
-		jugadorVO jugador = null;
+		JugadorVO jugador = null;
 
 		try {
 			// Abrimos la conexiÃ³n e inicializamos los parÃ¡metros 
@@ -24,8 +24,8 @@ public class jugadorFacade {
 			rset.next(); // Next mueve el cursor una fila adelante de su posición actual
 			
 			//getString-getInteger devuelven el valor que haya en la columna indicada o bien por un número o bien por su nombre
-			jugador = new jugadorVO(rset.getInteger("id"),rset.getInteger("pJugados"),rset.getInteger("pTitular"),rset.getString("nombre"),rset.getInteger("goles")
-								rset.getInteger("nacido"),rset.getInteger("rojas"),rset.getInteger("amarillas"),rset.getString("equipo"));
+			jugador = new JugadorVO(rset.getInt("id"),rset.getInt("pJugados"),rset.getInt("pTitular"),rset.getString("nombre"),rset.getInt("goles"),
+								rset.getInt("nacido"),rset.getInt("rojas"),rset.getInt("amarillas"),rset.getString("equipo"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -34,4 +34,3 @@ public class jugadorFacade {
 		return jugador;
 	}
 }
-
