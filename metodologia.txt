@@ -1,4 +1,5 @@
 Ernesto Bielsa Gracia:
+  06/10/21  2h sesion
   20/10/21  2h sesion
   23/10/21 1h30m conectar BD y crear tablas
   25/10/21 2h15m VO, FACADE, ficheroPrueba.java, insert_tablas
