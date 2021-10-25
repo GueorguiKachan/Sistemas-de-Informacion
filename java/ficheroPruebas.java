@@ -1,3 +1,5 @@
+package es.unizar.sisinf.grp1.model;
+
 import es.unizar.sisinf.grp1.model.EquipoFacade;
 import es.unizar.sisinf.grp1.model.EquipoVO;
 import es.unizar.sisinf.grp1.model.JugadorFacade;
@@ -9,12 +11,14 @@ import es.unizar.sisinf.grp1.model.SolicitudEquipoVO;
 import es.unizar.sisinf.grp1.model.SolicitudJugadorFacade;
 import es.unizar.sisinf.grp1.model.SolicitudJugadorVO;
 
+public class ficheroPruebas{
+
 public class Main  {
 	
 	protected void probarEquipo() {
 		
-		UserFacade facade = new UserFacade();
-		UserVO user = facade.getUser("El Gancho");
+		EquipoFacade facade = new EquipoFacade();
+		EquipoVO equipo = facade.getTeam("El Gancho");
 		
 		System.out.println("equipo = " + equipo.getTeamName());
 		System.out.println("estadio = " + equipo.getStadium() + " con capacidad " + equipo.getCapacidad() + " y cesped " + equipo.getCesped());
@@ -83,4 +87,15 @@ public class Main  {
 	System.out.println("codigo del equipo = " + solJugador.getCodJugador());
 	
 	}
+	
+	protected void probarGrupo() {
+		GrupoFacade facade = new GrupoFacade();
+		GrupoVO grupo = facade.getGrupo("Grupo 2");
+		
+	System.out.println("grupo = " + grupo.getNombre());
+	System.out.println("numero de equipos = " + grupo.getN_equipos());
+		
+	}
+}
+
 }
