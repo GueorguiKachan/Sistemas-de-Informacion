@@ -17,16 +17,17 @@ public class SolicitudJugadorFacade {
 	 // No se muy bien como vamos a sacar la info de las solicitudes así que pongo que aquí supongo que se buscan por el código de la solicitud
 	public SolicitudJugadorVO getSolicitud (Integer id) {
 		Connection conn = null;
-		solicitudJugadorVO solicitud = null;
+		SolicitudJugadorVO solicitud = null;
 
 		try {
 			// Abrimos la conexiÃ³n e inicializamos los parÃ¡metros 
 			conn = PoolConnectionManager.getConnection(); 
 			PreparedStatement ps = conn.prepareStatement("Select * from solicitudJugador where id= ?");
-			ps.setString(1, id);
+			ps.setString(1, id.toString());
 			ResultSet rset = ps.executeQuery();
 			rset.next();
-			solicitud = new SolicitudJugadorVO(rset.getInteger("id"), rset.getString("campo"), rset.getString("valor"),rset.getString("nomUser"),rset.getInteger("codJugador"));
+			solicitud = new SolicitudJugadorVO(rset.getInt("id"), rset.getString("campo"), rset.getString("valor"),
+					rset.getString("nomUser"),rset.getInt("codJugador"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
