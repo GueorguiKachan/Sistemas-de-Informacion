@@ -3,7 +3,7 @@ Apuntamos un par de puntos importantes para seguir durante la práctica y los se
 
 Decisiones/dificultades tomadas en el modelo entidad-relación:
 1) Se ha hecho una entidad de usuario registrado con los atributos nombre, password y esAdmin en vez de crear dos entidades, una para usuarios registrados y otra para usuarios administradores.
-2) Hemos decidido que el atributo de jugador nombre sea único.
+2) Hemos decidido que el atributo de jugador nombre no sea único.
 3) Hemos decidido que la relación entre el equipo y el estadio sea 1:1. es decir, dos equipos no van a poder compartir un estadio.
 4) Hemos creado una herencia disyuntiva de la entidad solicitud en dos sub-entidades, una para la solicitud de jugador y otra para solicitud de equipo.
 
@@ -17,6 +17,7 @@ Ernesto Bielsa Gracia:
   20/10/21  2h sesion
   23/10/21 1h30m conectar BD y crear tablas
   25/10/21 2h15m VO, FACADE, ficheroPrueba.java, insert_tablas
+  26/10/21 1h Main.java
   
 Gueorgui Alexandrovitch Kachan:
   06/10/21  2h sesion y 1h crear modelo relacional
