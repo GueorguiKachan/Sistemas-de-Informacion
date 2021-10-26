@@ -12,10 +12,8 @@ import es.unizar.sisinf.grp1.model.SolicitudJugadorFacade;
 import es.unizar.sisinf.grp1.model.SolicitudJugadorVO;
 
 public class ficheroPruebas{
-
-public class Main  {
 	
-	protected void probarEquipo() {
+	 protected void probarEquipo() {
 		
 		EquipoFacade facade = new EquipoFacade();
 		EquipoVO equipo = facade.getTeam("El Gancho C.F.");
@@ -96,6 +94,4 @@ public class Main  {
 	System.out.println("numero de equipos = " + grupo.getN_equipos());
 		
 	}
-}
-
 }
