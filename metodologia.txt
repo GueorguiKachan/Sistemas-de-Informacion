@@ -1,3 +1,17 @@
+Metodología:
+Apuntamos un par de puntos importantes para seguir durante la práctica y los seguimos todos al pie de la letra.
+
+Decisiones/dificultades tomadas en el modelo entidad-relación:
+1) Se ha hecho una entidad de usuario registrado con los atributos nombre, password y esAdmin en vez de crear dos entidades, una para usuarios registrados y otra para usuarios administradores.
+2) Hemos decidido que el atributo de jugador nombre sea único.
+3) Hemos decidido que la relación entre el equipo y el estadio sea 1:1. es decir, dos equipos no van a poder compartir un estadio.
+4) Hemos creado una herencia disyuntiva de la entidad solicitud en dos sub-entidades, una para la solicitud de jugador y otra para solicitud de equipo.
+
+Decisiones/dificultades tomadas en el modelo relacional:
+1) Hemos decidido crear dos relaciones: una para la solicitud de jugador y otra para la solicitud de equipo en vez de elegir otras opciones como crear 3 entidades o crear 1 sola.
+2) Hemos decidido meter los atributos de estadio en la relación de equipo debido a que la relación es 1:1.
+3) Se ha decidio no insertar los atributos de la relación grupo en la relación equipo a pesar de que sea relación 1:N debido a que no nos interesa tener tantos atributos en la relación atributo.
+
 Ernesto Bielsa Gracia:
   06/10/21  2h sesion
   20/10/21  2h sesion
@@ -7,4 +21,8 @@ Ernesto Bielsa Gracia:
 Gueorgui Alexandrovitch Kachan:
   06/10/21  2h sesion y 1h crear modelo relacional
   20/10/21  2h sesion
-  24/10/21  3h VO, FACADE, ficheroPrueba.java,
+  24/10/21  3h VO, FACADE, ficheroPrueba.java
+  
+  Jorge Buil Lanau:
+  06/10/21  2h sesión
+  25/10/21  1h15min conexión BD y estudiar VO y FACADE
