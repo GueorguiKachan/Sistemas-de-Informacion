@@ -1,0 +1,12 @@
+
+<description>Transfermarkt</description>
+<display-name>transFermarkt</display-name>
+<servlet>
+ <display-name>muestraJugador</display-name> <!--Este es el nombre que tiene que tener la clase java del servlet-->
+ <servlet-name>BuscarJugador</servlet-name>
+ <servlet-class>es.unizar.sisinf.controller.Demo</servlet-class> <!--Nombre del paquete en el que tiene que estar el fichero java-->
+</servlet>
+<servlet-mapping>
+ <servlet-name>BuscarJugador</servlet-name> <!--Indica el servlet al que hay que ir si la URI es la que hay en la línea de debajo-->
+ <url-pattern>/buscaJugador</url-pattern> 
+</servlet-mapping>
