@@ -67,22 +67,25 @@ form.buscar button{
 </div>
 
 <div class="table-responsive-sm">
-        <table class="table-striped">
+        <table class="table-striped" name="tablaJugadores">
             <tr>
+            
                 <th>Nombre<img src="" alt="ordenar" style="float:right;"></img></th>
-                <th>Edad<img src="" alt="ordenar" style="float:right;"></th>
-                <th>Equipo<img src="" alt="ordenar" style="float:right;"></th>
-                <th>P.Jugados<img src="" alt="ordenar" style="float:right;"></th>
-                <th>P.Titular<img src="" alt="ordenar" style="float:right;"></th>
-                <th>Goles<img src="" alt="ordenar" style="float:right;"></th>
+                <th>Grupo<img src="" alt="ordenar" style="float:right;"></th>
+                <th>Jugadores<img src="" alt="ordenar" style="float:right;"></th>
+                <th>Pr.Entradas<img src="" alt="ordenar" style="float:right;"></th>
+                <th>Estadio<img src="" alt="ordenar" style="float:right;"></th>
+                <th>Capacidad<img src="" alt="ordenar" style="float:right;"></th>
+                <th>Cesped<img src="" alt="ordenar" style="float:right;"></th>
                 <!--<th><img src="goles.png" alt="Goles"></img><img src="" alt="ordenar" style="float:right;"></th>-->
-                <th>Amarillas<img src="" alt="ordenar" style="float:right;"></th>
-                <th>Rojas<img src="" alt="ordenar" style="float:right;"></th>
+                
                 <th></th>
             </tr>
             <tbody>
+            <c:forEach var="jugador" items="${jugadoresEquipo}">
                 <tr>
-                    <td><c:out value="${jugador.nombre}" /></td>
+        
+                  <td><c:out value="${jugador.nombre}" /></td>
                     <td><c:out value="${jugador.nacido}" /></td>
                     <td><c:out value="${jugador.equipo}" /></td>
                     <td><c:out value="${jugador.p_jugados}" /></td>
@@ -90,8 +93,10 @@ form.buscar button{
                     <td><c:out value="${jugador.goles}" /></td>
                     <td><c:out value="${jugador.amarillas}" /></td>
                     <td><c:out value="${jugador.rojas}" /></td>
+                
                    <!-- <td><img src="editar.png" alt="Editar"></img></td>-->
-            	</tr>
+           		</tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>
