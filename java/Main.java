@@ -14,24 +14,31 @@ import es.unizar.sisinf.grp1.model.ficheroPruebas;
 
 import java.sql.Connection;
 
+import javax.naming.InitialContext;
+
 import es.unizar.sisinf.grp1.db.ConnectionManager;
 
 
 
 public class Main  {
 	public static void main(String[] args) {
+		
 		//ConnectionManager conexion = new ConnectionManager();
 		//Connection con;
 		try{
-			Connection con = ConnectionManager.getConnection();
-			ficheroPruebas fichero = new ficheroPruebas();
-			fichero.probarEquipo();
-			fichero.probarGrupo();
-			fichero.probarJugador();
-			fichero.probarSolicitudEquipo();
-			fichero.probarSolicitudJugador();
-			fichero.probarUsuario();
-			ConnectionManager.releaseConnection(con);
+			//InitialContext ctx = new InitialContext();
+			//Connection con = ConnectionManager.getConnection();
+			//ficheroPruebas fichero = new ficheroPruebas();
+			//fichero.probarEquipo();
+			GrupoFacade grupo = new GrupoFacade();
+			GrupoVO grupo2 = grupo.getGrupo("Grupo 2");
+			System.out.println(grupo2.getNombre());
+			//fichero.probarGrupo();
+			//fichero.probarJugador();
+			//fichero.probarSolicitudEquipo();
+			//fichero.probarSolicitudJugador();
+			//fichero.probarUsuario();
+			//ConnectionManager.releaseConnection(con);
 		}
 		catch(Exception e) {System.out.println("Something went wrong.");}
 	}
