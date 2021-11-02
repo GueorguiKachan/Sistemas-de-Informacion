@@ -7,7 +7,7 @@ import java.sql.*;
 public class ConnectionManager {
 	// JDBC nombred el driver y URL de BD 
 	private static final String JDBC_DRIVER = "org.postgresql.Driver";  
-	private static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres?currentSchema=prj1";
+	private static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres?currentSchema=public"; //hay que poner el schema correcto
 	
 	// Credenciales de la Base de Datos
 	private static final String USER = "postgres";
