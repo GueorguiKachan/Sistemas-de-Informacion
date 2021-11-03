@@ -45,16 +45,19 @@ public class BusquedaJugadorServlet extends HttpServlet {
 					System.out.println("Se va a buscar");
 		
 					JugadorVO miJugador = dao.getPlayer(nom);
-					System.out.println("El nombre del jugador es " + miJugador.getNombre());
+					//System.out.println("El equipo del jugador es " + miJugador.getEquipo());
 		
 					if (miJugador != null) { // Se traslada a un jsp, para mostrar la info del jugador
+						System.out.println("El equipo del jugador es " + miJugador.getEquipo());
+
 						request.setAttribute("jugador",miJugador);
-						request.getRequestDispatcher("infoJugador.jsp").forward(request, response);
+						request.getRequestDispatcher("muestraJugador.jsp").forward(request, response);
 					} else { // Se envía al usuario a un html con info únicamente estática, no es necesario jsp
 						response.sendRedirect("jugadorInexistente.html"); 
 					}
 				}
 			case "/jugadoresEquipo":
+				System.out.println("Los judadores del equipo");
 				List<JugadorVO> jugadores = new JugadorFacade().mismoEquipo(request.getParameter("equipo"));
 				request.setAttribute("jugadoresEquipo",jugadores);
 				request.getRequestDispatcher("jugadoresEquipo.jsp").forward(request, response);
