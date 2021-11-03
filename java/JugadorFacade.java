@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.ArrayList;
 
 import es.unizar.sisinf.grp1.db.PoolConnectionManager;
 import es.unizar.sisinf.grp1.db.ConnectionManager;
@@ -40,7 +41,7 @@ public class JugadorFacade {
 	
 	public List<JugadorVO> mismoEquipo(String team) {
 		Connection conn = null;
-		List<JugadorVO> jugadores = null;
+		List<JugadorVO> jugadores = new ArrayList<>();
 		JugadorVO jugador = null;
 		System.out.println("Se llega al dao");
 		try {
@@ -56,9 +57,10 @@ public class JugadorFacade {
 				jugador = new JugadorVO(rset.getInt("id"),rset.getInt("pJugados"),rset.getInt("pTitular"),rset.getString("nombre"),rset.getInt("goles"),
 						rset.getInt("nacido"),rset.getInt("rojas"),rset.getInt("amarillas"),rset.getString("equipo"));
 				jugadores.add(jugador);
+				System.out.println("Jugador: "+jugador.getNombre());
 			}
 			//getString-getInteger devuelven el valor que haya en la columna indicada o bien por un número o bien por su nombre
-			
+			System.out.println("acaba");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
