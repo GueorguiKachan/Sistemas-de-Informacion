@@ -70,14 +70,15 @@ form.buscar button{
         <table class="table-striped" name="tablaJugadores">
             <tr>
             
-                <th>Nombre<img src="" alt="ordenar" style="float:right;"></img></th>
-                <th>Grupo<img src="" alt="ordenar" style="float:right;"></th>
-                <th>Jugadores<img src="" alt="ordenar" style="float:right;"></th>
-                <th>Pr.Entradas<img src="" alt="ordenar" style="float:right;"></th>
-                <th>Estadio<img src="" alt="ordenar" style="float:right;"></th>
-                <th>Capacidad<img src="" alt="ordenar" style="float:right;"></th>
-                <th>Cesped<img src="" alt="ordenar" style="float:right;"></th>
+               <th>Nombre<img src=""  style="float:right; color:white;"></img></th>
+                <th>Edad<img src=""  style="float:right;color:white;"></th>
+                <th>Equipo<img src=""  style="float:right;color:white;"></th>
+                <th>P.Jugados<img src=""  style="float:right;color:white;"></th>
+                <th>P.Titular<img src=""  style="float:right;color:white;"></th>
+                <th>Goles<img src=""  style="float:right;color:white;"></th>
                 <!--<th><img src="goles.png" alt="Goles"></img><img src="" alt="ordenar" style="float:right;"></th>-->
+                <th>Amarillas<img src="" style="float:right;color:white;"></th>
+                <th>Rojas<img src=""  style="float:right;color:white;"></th>
                 
                 <th></th>
             </tr>
