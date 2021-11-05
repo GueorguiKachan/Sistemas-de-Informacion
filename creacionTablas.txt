@@ -8,7 +8,7 @@ CREATE TABLE grupos(
   numJugadores INT,
   precioEnt INT,
   estadio VARCHAR(100),
-  capacidad VARCHAR(100),
+  capacidad INT,
   tipoCesped VARCHAR(100),
   grupo VARCHAR(100),
   FOREIGN KEY (grupo) REFERENCES grupos(nombre)
@@ -54,4 +54,3 @@ esAdmin boolean
   FOREIGN KEY (codEquipo) REFERENCES equipos(nombre)
   );
 
-ALTER TABLE public.equipos ALTER COLUMN capacidad TYPE int4 USING capacidad::int4;
