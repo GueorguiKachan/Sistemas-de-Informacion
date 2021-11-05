@@ -8,7 +8,7 @@ CREATE TABLE grupos(
   numJugadores INT,
   precioEnt INT,
   estadio VARCHAR(100),
-  capacidad INT,
+  capacidad VARCHAR(100),
   tipoCesped VARCHAR(100),
   grupo VARCHAR(100),
   FOREIGN KEY (grupo) REFERENCES grupos(nombre)
