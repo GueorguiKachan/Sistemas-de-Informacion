@@ -53,3 +53,5 @@ esAdmin boolean
   FOREIGN KEY (nomUser) REFERENCES usuarios(nombre),
   FOREIGN KEY (codEquipo) REFERENCES equipos(nombre)
   );
+
+ALTER TABLE public.equipos ALTER COLUMN capacidad TYPE int4 USING capacidad::int4;
