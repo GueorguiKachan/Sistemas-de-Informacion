@@ -2,8 +2,8 @@ package es.unizar.sisinf.grp1.model;
 
 public class EquipoVO {
 	
-	public EquipoVO(String teamName, String stadium, Integer precio, Integer numJugadores, String grupo,
-			Integer capacidad, String cesped) {
+	public EquipoVO(String teamName, Integer numJugadores, Integer precio, String stadium,
+			String capacidad, String cesped,   String grupo) {
 		super();
 		this.teamName = teamName;
 		this.stadium = stadium;
@@ -18,7 +18,7 @@ public class EquipoVO {
 	private Integer precio;
 	private Integer numJugadores;
 	private String grupo;
-	private Integer capacidad;
+	private String capacidad;
 	private String cesped;
 	/**
 	 * Constructor
@@ -55,10 +55,10 @@ public class EquipoVO {
 	public void setGrupo(String grupo) {
 		this.grupo = grupo;
 	}
-	public Integer getCapacidad() {
+	public String getCapacidad() {
 		return capacidad;
 	}
-	public void setCapacidad(Integer capacidad) {
+	public void setCapacidad(String capacidad) {
 		this.capacidad = capacidad;
 	}
 	public String getCesped() {

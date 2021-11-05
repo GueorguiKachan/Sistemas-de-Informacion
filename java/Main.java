@@ -1,6 +1,6 @@
 package es.unizar.sisinf.grp1.model;
 
-import es.unizar.sisinf.grp1.model.EquipoFacade;
+/*import es.unizar.sisinf.grp1.model.EquipoFacade;
 import es.unizar.sisinf.grp1.model.EquipoVO;
 import es.unizar.sisinf.grp1.model.JugadorFacade;
 import es.unizar.sisinf.grp1.model.JugadorVO;
@@ -16,7 +16,7 @@ import java.sql.Connection;
 
 import javax.naming.InitialContext;
 
-import es.unizar.sisinf.grp1.db.ConnectionManager;
+import es.unizar.sisinf.grp1.db.ConnectionManager;*/
 
 
 
@@ -30,9 +30,15 @@ public class Main  {
 			//Connection con = ConnectionManager.getConnection();
 			//ficheroPruebas fichero = new ficheroPruebas();
 			//fichero.probarEquipo();
-			GrupoFacade grupo = new GrupoFacade();
+			ficheroPruebas.probarGrupo();
+			 ficheroPruebas.probarEquipo();
+			ficheroPruebas.probarJugador();
+			  ficheroPruebas.probarSolicitudEquipo();
+			  ficheroPruebas.probarSolicitudJugador();
+			  ficheroPruebas.probarUsuario();
+			/*GrupoFacade grupo = new GrupoFacade();
 			GrupoVO grupo2 = grupo.getGrupo("Grupo 2");
-			System.out.println(grupo2.getNombre());
+			System.out.println(grupo2.getNombre());*/
 			//fichero.probarGrupo();
 			//fichero.probarJugador();
 			//fichero.probarSolicitudEquipo();

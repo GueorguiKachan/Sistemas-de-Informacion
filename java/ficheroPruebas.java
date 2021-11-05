@@ -1,6 +1,6 @@
 package es.unizar.sisinf.grp1.model;
 
-import es.unizar.sisinf.grp1.model.EquipoFacade;
+/*import es.unizar.sisinf.grp1.model.EquipoFacade;
 import es.unizar.sisinf.grp1.model.EquipoVO;
 import es.unizar.sisinf.grp1.model.JugadorFacade;
 import es.unizar.sisinf.grp1.model.JugadorVO;
@@ -9,11 +9,11 @@ import es.unizar.sisinf.grp1.model.UserVO;
 import es.unizar.sisinf.grp1.model.SolicitudEquipoFacade;
 import es.unizar.sisinf.grp1.model.SolicitudEquipoVO;
 import es.unizar.sisinf.grp1.model.SolicitudJugadorFacade;
-import es.unizar.sisinf.grp1.model.SolicitudJugadorVO;
+import es.unizar.sisinf.grp1.model.SolicitudJugadorVO;*/
 
 public class ficheroPruebas{
 	
-	 protected void probarEquipo() {
+	 protected static void probarEquipo() {
 		
 		EquipoFacade facade = new EquipoFacade();
 		EquipoVO equipo = facade.getTeam("El Gancho C.F.");
@@ -27,7 +27,7 @@ public class ficheroPruebas{
 	}
 
 
-	protected void probarJugador() {
+	protected static void probarJugador() {
 		
 		JugadorFacade facade = new JugadorFacade();
 		JugadorVO jugador = facade.getPlayer(1);
@@ -38,12 +38,12 @@ public class ficheroPruebas{
 		System.out.println("nombre = " + jugador.getNombre());
 		System.out.println("goles = " + jugador.getGoles());
 		System.out.println("nacido = " + jugador.getNacido() + " y edad " + jugador.getEdad());
-		System.out.println("grupo = " + jugador.getRojas());
-		System.out.println("grupo = " + jugador.getAmarillas());
+		System.out.println("rojas = " + jugador.getRojas());
+		System.out.println("amarillas = " + jugador.getAmarillas());
 		System.out.println("grupo = " + jugador.getEquipo());
 	}
 
-	protected void probarUsuario() {
+	protected static void probarUsuario() {
 		
 		UserFacade facade = new UserFacade();
 		UserVO user = facade.getUser("Gueorgui Alexandrovitch Kachan");
@@ -60,33 +60,33 @@ public class ficheroPruebas{
 	
 	}
 
-	protected void probarSolicitudEquipo() {
+	protected static void probarSolicitudEquipo() {
 		
 		SolicitudEquipoFacade facade = new SolicitudEquipoFacade();
 		SolicitudEquipoVO solEquipo = facade.getSolicitud(1);
 
-	System.out.println("equipo = " + solEquipo.getId());
+	System.out.println("solicitud_id = " + solEquipo.getId());
 	System.out.println("campo = " + solEquipo.getCampo());
 	System.out.println("valor = " + solEquipo.getValor());
-	System.out.println("numero usuario = " + solEquipo.getNomUser());
+	System.out.println("nombre usuario = " + solEquipo.getNomUser());
 	System.out.println("codigo del equipo = " + solEquipo.getCodEquipo());
 	
 	}
 
-	protected void probarSolicitudJugador() {
+	protected static void probarSolicitudJugador() {
 		
 		SolicitudJugadorFacade facade = new SolicitudJugadorFacade();
 		SolicitudJugadorVO solJugador = facade.getSolicitud(1);
 
-	System.out.println("equipo = " + solJugador.getId());
+	System.out.println("solicitud_id = " + solJugador.getId());
 	System.out.println("campo = " + solJugador.getCampo());
 	System.out.println("valor = " + solJugador.getValor());
-	System.out.println("numero usuario = " + solJugador.getNomUser());
-	System.out.println("codigo del equipo = " + solJugador.getCodJugador());
+	System.out.println("nombre usuario = " + solJugador.getNomUser());
+	System.out.println("codigo del jugador= " + solJugador.getCodJugador());
 	
 	}
 	
-	protected void probarGrupo() {
+	protected static void probarGrupo() {
 		GrupoFacade facade = new GrupoFacade();
 		GrupoVO grupo = facade.getGrupo("Grupo 2");
 		

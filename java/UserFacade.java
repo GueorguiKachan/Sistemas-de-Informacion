@@ -5,13 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import es.unizar.sisinf.grp1.db.ConnectionManager;
 import es.unizar.sisinf.grp1.db.PoolConnectionManager;
 
 public class UserFacade {
 	
-	private static String countByUserName = "SELECT count(*) cuenta FROM users WHERE username = ?";
-	private static String findByUserName = "SELECT * FROM users WHERE username = ?";
-	private static String updateDate = "UPDATE users set last_login = current_timestamp where username = ?";
+	private static String countByUserName = "SELECT count(*) cuenta FROM usuarios WHERE nombre = ?";
+	private static String findByUserName = "SELECT * FROM usuarios WHERE nombre = ?";
 	
 	/** * Busca un registro en la tabla DEMO por ID * 
 		@param id Identificador del registro buscado * 
@@ -23,13 +23,11 @@ public class UserFacade {
 		
 		try {
 			// Abrimos la conexiÃ³n e inicializamos los parÃ¡metros 
-			conn = PoolConnectionManager.getConnection(); 
+			conn = ConnectionManager.getConnection(); 
 			PreparedStatement countPs = conn.prepareStatement(countByUserName);
 			PreparedStatement findPs = conn.prepareStatement(findByUserName);
-			PreparedStatement updatePs = conn.prepareStatement(updateDate);
 			countPs.setString(1, user.getUserName());
 			findPs.setString(1, user.getUserName());
-			updatePs.setString(1, user.getUserName());
 			
 			// Ejecutamos la consulta 
 			ResultSet findRs = findPs.executeQuery();
@@ -46,7 +44,6 @@ public class UserFacade {
 				findRs.next();
 				String dbpwd = findRs.getString("password");
 				if (dbpwd.contentEquals(user.getPassword())) {
-					updatePs.execute();
 					result = true;
 				}
 			} else { 
@@ -58,16 +55,13 @@ public class UserFacade {
 			findPs.close();
 			countRs.close();
 			countPs.close();
-			updatePs.close();
-
+			ConnectionManager.releaseConnection(conn);
 		} catch(SQLException se) {
 			se.printStackTrace();  
 		
 		} catch(Exception e) {
 			e.printStackTrace(System.err); 
-		} finally {
-			PoolConnectionManager.releaseConnection(conn); 
-		}
+		} 
 		
 		return result;
 	}
@@ -81,14 +75,13 @@ public class UserFacade {
 			conn = PoolConnectionManager.getConnection(); 
 			PreparedStatement countPs = conn.prepareStatement(countByUserName);
 			PreparedStatement findPs = conn.prepareStatement(findByUserName);
-			PreparedStatement updatePs = conn.prepareStatement(updateDate);
 			countPs.setString(1, user.getUserName());
 			findPs.setString(1, user.getUserName());
-			updatePs.setString(1, user.getUserName());
 			
 			// Ejecutamos la consulta 
 			ResultSet findRs = findPs.executeQuery();
 			ResultSet countRs = countPs.executeQuery();
+			
 			
 			countRs.next();
 			int n = countRs.getInt(1);
@@ -112,16 +105,13 @@ public class UserFacade {
 			findPs.close();
 			countRs.close();
 			countPs.close();
-			updatePs.close();
-
+			ConnectionManager.releaseConnection(conn);
 		} catch(SQLException se) {
 			se.printStackTrace();  
 		
 		} catch(Exception e) {
 			e.printStackTrace(System.err); 
-		} finally {
-			PoolConnectionManager.releaseConnection(conn); 
-		}
+		} 
 		
 		return result;
 	}
@@ -132,17 +122,16 @@ public class UserFacade {
 
 		try {
 			// Abrimos la conexiÃ³n e inicializamos los parÃ¡metros 
-			conn = PoolConnectionManager.getConnection(); 
-			PreparedStatement ps = conn.prepareStatement("Select * from users where username= ?");
+			conn = ConnectionManager.getConnection(); 
+			PreparedStatement ps = conn.prepareStatement("Select * from usuarios where nombre= ?");
 			ps.setString(1, username);
 			ResultSet rset = ps.executeQuery();
 			rset.next();
-			user = new UserVO(rset.getString("username"), rset.getString("password"), rset.getBoolean("esadmin"));
+			user = new UserVO(rset.getString("nombre"), rset.getString("password"), rset.getBoolean("esadmin"));
+			ConnectionManager.releaseConnection(conn);
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			PoolConnectionManager.releaseConnection(conn);
-		}
+		} 
 		return user;
 	}
 	

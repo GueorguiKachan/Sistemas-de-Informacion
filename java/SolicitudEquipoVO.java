@@ -1,6 +1,6 @@
 package es.unizar.sisinf.grp1.model;
 
-import java.util.Date;
+//import java.util.Date;
 
 /**
  * tabla users
@@ -12,7 +12,7 @@ public class SolicitudEquipoVO {
 	private String campo;
 	private String valor;
 	private String nomUser;
-	private Integer codEquipo;
+	private String codEquipo;
 	
 	/**
 	 * Constructor
@@ -21,7 +21,7 @@ public class SolicitudEquipoVO {
 	 */
 	
 	
-	public SolicitudEquipoVO(Integer id, String campo, String valor, String nomUser, Integer codEquipo) {
+	public SolicitudEquipoVO(Integer id, String campo, String valor, String nomUser, String codEquipo) {
 		super();
 		this.id = id;
 		this.campo = campo;
@@ -62,11 +62,11 @@ public class SolicitudEquipoVO {
 		this.nomUser = nomUser;
 	}
 
-	public Integer getCodEquipo() {
+	public String getCodEquipo() {
 		return codEquipo;
 	}
 
-	public void setCodEquipo(Integer codEquipo) {
+	public void setCodEquipo(String codEquipo) {
 		this.codEquipo = codEquipo;
 	}
 	

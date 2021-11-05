@@ -1,6 +1,6 @@
 package es.unizar.sisinf.grp1.model;
 
-import java.util.Date;
+//import java.util.Date;
 
 /**
  * tabla users
