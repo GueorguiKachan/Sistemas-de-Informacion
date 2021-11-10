@@ -69,5 +69,35 @@ public class JugadorFacade {
 		}
 		return jugadores;
 	}
+	
+	public List<JugadorVO> maxGoleadores() {
+		Connection conn = null;
+		List<JugadorVO> jugadores = new ArrayList<>();
+		JugadorVO jugador = null;
+		System.out.println("Se llega al dao");
+		try {
+			// Abrimos la conexiÃ³n e inicializamos los parÃ¡metros 
+			conn = ConnectionManager.getConnection(); 
+			System.out.println("Se obtiene la conexion");
+			PreparedStatement ps = conn.prepareStatement("Select * from jugadores where equipo= ?");
+			System.out.println("Antes de hacer print a la query");
+			ps.setString(1, team); // setString asigna el valor del 2º argumento al parámetro que está en la posición del 1º argumento. Sustituye los ? 
+			System.out.println("La query es "+ ps);
+			ResultSet rset = ps.executeQuery();
+			while(rset.next()) { // Next mueve el cursor una fila adelante de su posición actual
+				jugador = new JugadorVO(rset.getInt("id"),rset.getInt("pJugados"),rset.getInt("pTitular"),rset.getString("nombre"),rset.getInt("goles"),
+						rset.getInt("nacido"),rset.getInt("rojas"),rset.getInt("amarillas"),rset.getString("equipo"));
+				jugadores.add(jugador);
+				System.out.println("Jugador: "+jugador.getNombre());
+			}
+			//getString-getInteger devuelven el valor que haya en la columna indicada o bien por un número o bien por su nombre
+			System.out.println("acaba");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			//PoolConnectionManager.releaseConnection(conn);
+		}
+		return jugadores;
+	}
 
 }
