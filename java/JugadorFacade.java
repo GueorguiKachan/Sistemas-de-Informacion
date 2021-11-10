@@ -79,7 +79,7 @@ public class JugadorFacade {
 			// Abrimos la conexiÃ³n e inicializamos los parÃ¡metros 
 			conn = ConnectionManager.getConnection(); 
 			System.out.println("Se obtiene la conexion");
-			PreparedStatement ps = conn.prepareStatement("Select * from jugadores where equipo= ?");
+			PreparedStatement ps = conn.prepareStatement("Select * from jugadores order by goles desc limit 5");
 			System.out.println("Antes de hacer print a la query");
 			ps.setString(1, team); // setString asigna el valor del 2º argumento al parámetro que está en la posición del 1º argumento. Sustituye los ? 
 			System.out.println("La query es "+ ps);
