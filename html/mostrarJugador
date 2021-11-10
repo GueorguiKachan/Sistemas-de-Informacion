@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+	.cabecera{padding:20px;}
+	table,th,td{border:1px solid black;padding:15px 0;}
+	table{width:100%;border-collapse:collapse;}
+</style>
+</head>
+<body>
+
+	<div class="container">
+	<div class="row">
+		<table class="table-striped">
+            <tr>
+            	<td>
+            <label for="numero"># 8</label>
+  			<label for="equipo">Equipo: tardienta</label>
+            </td>
+            <td>
+            <img src="" alt="editar" style="float:right;">
+            </td>
+            </tr>
+            </table>
+            
+            <div class="container">
+            
+            
+            
+            <div class="row">
+             <div class="col-6">
+             <p>Nacido: 1998</p>
+            </div>
+            <div class="col-6">
+             <p>Años: 23</p>
+            </div>
+            </div>
+            <div class="row">
+            	 <div class="col-6">
+             <p>Partidos:</p>
+            </div>
+            <div class="col-6">
+             <p>Tarjetas:</p>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-1"></div>
+            	 <div class="col-5">
+             <label for="jugados">Jugados: 3</label>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-5">
+              <label for="amarillas">Amarillas: 0</label>
+            </div>
+            </div>
+            
+            <div class="row">
+            <div class="col-1"></div>
+            	 <div class="col-5">
+             <label for="titular">Titular: 0</label>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-5">
+              <label for="rojas">Rojas: 0</label>
+            </div>
+            </div>
+            
+            <div class="row">
+            <div class="col-12">
+            <label for="goles">Goles: 0</label>
+            </div>
+            	
+           
+            
+		</table>
+	</div>
+</body>
+</html>
