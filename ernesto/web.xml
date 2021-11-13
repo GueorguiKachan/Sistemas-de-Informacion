@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>test_project</display-name>
+  
+<!--
+<jsp-config>
+	<taglib>
+	<taglib-uri>http://java.sun.com/jstl/fmt</taglib-uri>
+	<taglib-location>/WEB-INF/fmt.tld</taglib-location>
+	</taglib>
+	<taglib>
+	<taglib-uri>http://java.sun.com/jstl/fmt-rt</taglib-uri>
+	<taglib-location>/WEB-INF/fmt-rt.tld</taglib-location>
+	</taglib>
+	<taglib>
+	<taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
+	<taglib-location>/WEB-INF/c.tld</taglib-location>
+	</taglib>
+	<taglib>
+	<taglib-uri>http://java.sun.com/jstl/core-rt</taglib-uri>
+	<taglib-location>/WEB-INF/c-rt.tld</taglib-location>
+	</taglib>
+	<taglib>
+	<taglib-uri>http://java.sun.com/jstl/sql</taglib-uri>
+	<taglib-location>/WEB-INF/sql.tld</taglib-location>
+	</taglib>
+	<taglib>
+	<taglib-uri>http://java.sun.com/jstl/sql-rt</taglib-uri>
+	<taglib-location>/WEB-INF/sql-rt.tld</taglib-location>
+	</taglib>
+	<taglib>
+	<taglib-uri>http://java.sun.com/jstl/x</taglib-uri>
+	<taglib-location>/WEB-INF/x.tld</taglib-location>
+	</taglib>
+	<taglib>
+	<taglib-uri>http://java.sun.com/jstl/x-rt</taglib-uri>
+	<taglib-location>/WEB-INF/x-rt.tld</taglib-location>
+	</taglib>
+	</jsp-config>  
+-->
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+ <display-name>BusquedaEquipo</display-name> <!--Este es el nombre que tiene que tener la clase java del servlet-->
+ <servlet-name>BuscarJugador</servlet-name>
+ <servlet-class>es.unizar.sisinf.grp1.servlet</servlet-class> <!--Nombre del paquete en el que tiene que estar el fichero java-->
+</servlet>
+<servlet-mapping>
+ <servlet-name>BuscarJugador</servlet-name> <!--Indica el servlet al que hay que ir si la URI es la que hay en la línea de debajo-->
+ <url-pattern>/muestraEquipo</url-pattern> 
+</servlet-mapping>
+  
+</web-app>
