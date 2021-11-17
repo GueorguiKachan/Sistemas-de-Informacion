@@ -74,7 +74,7 @@ form.buscar button{
             </tr>
             <tbody>
                 <tr>
-                    <td><c:out value="${equipo.nombre}" /></td>
+                    <td><c:out value="${equipo.getTeamName()}" /></td>
                    <!-- <td><img src="editar.png" alt="Editar"></img></td>-->
             	</tr>
             </tbody>
