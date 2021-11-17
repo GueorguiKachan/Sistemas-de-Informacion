@@ -40,6 +40,7 @@
 -->
 
   <welcome-file-list>
+  	<welcome-file>paginaPrincipal.jsp</welcome-file>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
@@ -56,6 +57,16 @@
 <servlet-mapping>
  <servlet-name>BusquedaEquipo</servlet-name> <!--Indica el servlet al que hay que ir si la URI es la que hay en la línea de debajo-->
  <url-pattern>/muestraEquipo</url-pattern> 
+</servlet-mapping>
+
+<servlet>
+ <display-name>BusquedaJugadorServlet</display-name> <!--Este es el nombre que tiene que tener la clase java del servlet-->
+ <servlet-name>BusquedaJugador</servlet-name>
+ <servlet-class>es.unizar.sisinf.grp1.servlet</servlet-class> <!--Nombre del paquete en el que tiene que estar el fichero java-->
+</servlet>
+<servlet-mapping>
+ <servlet-name>BusquedaJugador</servlet-name> <!--Indica el servlet al que hay que ir si la URI es la que hay en la línea de debajo-->
+ <url-pattern>/mostrarJugador</url-pattern> 
 </servlet-mapping>
   
 </web-app>
