@@ -183,7 +183,7 @@ equipos.add(dao2.getTeam(goleadores.get(i).getEquipo()));
 						<tr>
 						<form action="busquedaJugador" method="get">
 							<td><a href='busquedaJugador?id=<%=goleadores.get(i).getId()%>'><%=goleadores.get(i).getNombre()%></a></td>
-							<td><a href='busquedaEquipo?equipo=<%=goleadores.get(i).getEquipo()%>'><%=goleadores.get(i).getEquipo()%></a></td>
+							<td><a href='jugadoresEquipo?equipo=<%=goleadores.get(i).getEquipo()%>'><%=goleadores.get(i).getEquipo()%></a></td>
 							<td><%=goleadores.get(i).getEquipo()%></td>
 							<td><%=equipos.get(i).getGrupo()%></td>
 							<td><%=goleadores.get(i).getP_jugados()%></td>

@@ -18,7 +18,7 @@ import es.unizar.sisinf.grp1.model.JugadorVO;
 /**
  * Servlet implementation class BusquedaJugadorSerlvet
  */
-@WebServlet(description = "Servlet de busqueda de jugadores", urlPatterns = { "/busquedaJugador" })
+@WebServlet(description = "Servlet de busqueda de jugadores", urlPatterns = { "/busquedaJugador","/jugadoresEquipo" })
 
 public class BusquedaJugadorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -48,6 +48,16 @@ public class BusquedaJugadorServlet extends HttpServlet {
 				request.setAttribute("jugador",lista);
 				request.getRequestDispatcher("mostrarJugador.jsp").forward(request, response);
 					
+			case "/jugadoresEquipo":
+				JugadorFacade dao2 = new JugadorFacade();		
+				String nom = request.getParameter("equipo");
+				
+				List<JugadorVO> lista2 = new ArrayList<>();
+				lista2 = dao2.mismoEquipo(nom);
+				
+				request.setAttribute("jugadoresEquipo",lista2);
+				request.getRequestDispatcher("jugadoresEquipo.jsp").forward(request, response);
+				
 		}
 	}
 

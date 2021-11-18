@@ -18,7 +18,7 @@ import es.unizar.sisinf.grp1.model.JugadorVO;
 /**
  * Servlet implementation class BusquedaJugadorSerlvet
  */
-@WebServlet(description = "Servlet de busqueda de equipos", urlPatterns = { "/busquedaEquipo" })
+@WebServlet(description = "Servlet de busqueda de equipos", urlPatterns = { "/busquedaEquipo","/tablaEquipos" })
 
 public class BusquedaEquipoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -47,6 +47,28 @@ public class BusquedaEquipoServlet extends HttpServlet {
 					System.out.println("Se va a buscar");
 					List<EquipoVO> lista = new ArrayList<EquipoVO>();
 					EquipoVO miEquipo = dao.getTeam(nom);
+					
+					//System.out.println("El equipo del jugador es " + miJugador.getEquipo());
+		
+					if (miEquipo != null) { // Se traslada a un jsp, para mostrar la info del jugador
+						//System.out.println("El equipo del jugador es " + miEquipo.getTeam());
+						lista.add(miEquipo);
+						request.setAttribute("equipo",lista);
+						request.getRequestDispatcher("muestraEquipo.jsp").forward(request, response);
+					} else { // Se envía al usuario a un html con info únicamente estática, no es necesario jsp
+						response.sendRedirect("jugadorInexistente.html"); 
+					}
+				}
+			case "/tablaEquipos":
+				EquipoFacade dao = new EquipoFacade();		
+				String nom = request.getParameter("equipo"); //tiene q coincidir equipo
+				System.out.println("El equipo que se busca es " + nom);
+				if (nom == null) {
+					response.sendRedirect("jugadorInexistente.hmtl");
+				} else {
+					System.out.println("Se va a buscar");
+					List<EquipoVO> lista = new ArrayList<EquipoVO>();
+					lista = dao.getTeam(nom);
 					
 					//System.out.println("El equipo del jugador es " + miJugador.getEquipo());
 		
