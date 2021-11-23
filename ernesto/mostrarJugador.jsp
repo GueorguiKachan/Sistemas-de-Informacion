@@ -131,20 +131,22 @@ form.buscar button{
  </div>
  <div id="buscadores">
  	<div class="row">
- 	<form name="buscar" action="procesarForm.do" method="get" style="margin:auto;display:flex;max-width:210px">
+ 	<form name="buscar" action="procesarGrupo" method="get" style="margin:auto;display:flex;max-width:210px">
 	  		<input type="text" name="buscar"  placeholder="Introduzca un grupo" size="17">
 	 		<button type="submit"><i class="fa fa-angle-double-right"></i></button>
 	</form>
-	<form name="buscar" action="procesarForm.do" method="get" style="margin:auto;display:flex;max-width:210px">
+	<form name="buscar" action="procesarEquipo" method="get" style="margin:auto;display:flex;max-width:210px">
 	  		<input type="text" name="buscar"  placeholder="Introduzca un equipo" size="17">
 	 		<button type="submit"><i class="fa fa-angle-double-right"></i></button>
 	</form>
-	<form name="buscar" action="procesarForm.do"  method="get" style="margin:auto;display:flex;max-width:210px">
+	<form name="buscar" action="procesarJugador"  method="get" style="margin:auto;display:flex;max-width:210px">
 	  		<input type="text" name="buscar"  placeholder="Introduzca un jugador" size="17">
 	 		<button type="submit"><i class="fa fa-angle-double-right"></i></button>
 	</form>
 	</div>
  </div>
+ 
+</div>
  
 </div>
 

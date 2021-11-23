@@ -131,15 +131,15 @@ form.buscar button{
  </div>
  <div id="buscadores">
  	<div class="row">
- 	<form name="buscar" action="procesarForm.do" method="get" style="margin:auto;display:flex;max-width:210px">
+ 	<form name="buscar" action="procesarGrupo" method="get" style="margin:auto;display:flex;max-width:210px">
 	  		<input type="text" name="buscar"  placeholder="Introduzca un grupo" size="17">
 	 		<button type="submit"><i class="fa fa-angle-double-right"></i></button>
 	</form>
-	<form name="buscar" action="procesarForm.do" method="get" style="margin:auto;display:flex;max-width:210px">
+	<form name="buscar" action="procesarEquipo" method="get" style="margin:auto;display:flex;max-width:210px">
 	  		<input type="text" name="buscar"  placeholder="Introduzca un equipo" size="17">
 	 		<button type="submit"><i class="fa fa-angle-double-right"></i></button>
 	</form>
-	<form name="buscar" action="procesarForm.do"  method="get" style="margin:auto;display:flex;max-width:210px">
+	<form name="buscar" action="procesarJugador"  method="get" style="margin:auto;display:flex;max-width:210px">
 	  		<input type="text" name="buscar"  placeholder="Introduzca un jugador" size="17">
 	 		<button type="submit"><i class="fa fa-angle-double-right"></i></button>
 	</form>
@@ -184,8 +184,7 @@ equipos.add(dao2.getTeam(goleadores.get(i).getEquipo()));
 						<form action="busquedaJugador" method="get">
 							<td><a href='busquedaJugador?id=<%=goleadores.get(i).getId()%>'><%=goleadores.get(i).getNombre()%></a></td>
 							<td><a href='jugadoresEquipo?equipo=<%=goleadores.get(i).getEquipo()%>'><%=goleadores.get(i).getEquipo()%></a></td>
-							<td><%=goleadores.get(i).getEquipo()%></td>
-							<td><%=equipos.get(i).getGrupo()%></td>
+							<td><a href='equiposGrupo?grupo=<%=equipos.get(i).getGrupo()%>'><%=equipos.get(i).getGrupo()%></a></td>
 							<td><%=goleadores.get(i).getP_jugados()%></td>
 							<td><%=goleadores.get(i).getP_titular()%></td>
 							<td><%=goleadores.get(i).getGoles()%></td>
