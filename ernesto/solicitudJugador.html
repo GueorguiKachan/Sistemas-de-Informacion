@@ -1,0 +1,53 @@
+<%
+					for (int i=0; i<goleadores.size();i++){%>
+						<tr>
+						<form action="busquedaJugador" method="get">
+							<td><img src="editar.png" alt="Editar"></img></td>
+                            <td><img src="editar.png" alt="Editar"></img></td>
+                            <td><img src="editar.png" alt="Editar"></img></td>
+                            <td><img src="editar.png" alt="Editar"></img></td>
+                            <td><img src="editar.png" alt="Editar"></img></td>
+                            <td><img src="editar.png" alt="Editar"></img></td>
+							<td>
+                            <div class="modal-box" style="margin:auto">
+                            <button type="button" class="btn btn-primary btn-lg show-modal" style="background-color:#117A65; color:white; margin:auto;width:60px; height:60px" data-toggle="modal" data-target="#editar-button">Editar
+                            </button>
+                            </div>
+                            </td>
+                            </form>
+						</tr>
+                            
+        	
+        
+        	<div id="editar-button"  class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document" >
+            <div class="modal-content clearfix">
+            <div class="modal-body">
+            <div class="row">
+            <div class="col-6">
+            <button data-dismiss="modal" class="close">&times;</button>
+            <form name="solicitudJugador" action="crearSolicitudJugador" method="get">
+            <label for="solicitudJugadorNombre">Nombre:</label>
+            <input type="text" id="solicitudJugadorNombre" name="solicitudJugadorNombre" value="Ernesto Bielsa Gracia" readonly></input>
+            <label for="solicitudJugadorCampo">Campo a modificar:</label>
+            <select id="solicitudJugadorCampo" name="solicitudJugadorCamp">
+            	<option value="nombres">Nombres</option>
+                <option value="goles">Goles</option>
+            </select>
+            <label for="solicitudJugadorValorNuevo">Valor nuevo:</label>
+            <input type="text" id="solicitudJugadorValorNuevo" name="solicitudJugadorValorNuevo"></input>
+            <button type="button" class="btn btn-primary btn-sm" style="background-color:#117A65; color:white; margin:auto;">Enviar</button>
+            </form>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+    			
+        			
+                       
+                            
+                            
+						
+				<%}%>
