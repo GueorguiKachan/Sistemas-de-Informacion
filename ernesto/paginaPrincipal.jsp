@@ -5,6 +5,8 @@
 <%@ page import="es.unizar.sisinf.grp1.model.JugadorVO" %>
 <%@ page import="es.unizar.sisinf.grp1.model.EquipoFacade" %>
 <%@ page import="es.unizar.sisinf.grp1.model.EquipoVO" %>
+<%@ page import="es.unizar.sisinf.grp1.model.UserFacade" %>
+<%@ page import="es.unizar.sisinf.grp1.model.UserVO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
@@ -20,7 +22,6 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
  <style type="text/css">body{background-color:#34495E;}</style>
 <style>
-
 *{
 	box-sizing: border-box;
 }
@@ -41,7 +42,6 @@ form.buscar button{
   .cabecera{
 	background-color: #CCD1D1;
 	padding:10px 15px 15px 10px ;
-
 }
 .show-modal{
     color: #fff;
@@ -73,7 +73,6 @@ form.buscar button{
     text-align: center;
     border: none;
 }
-
 </style>
 </head>
 <body>
@@ -87,7 +86,8 @@ form.buscar button{
 	  		<input type="text" name="buscar" placeholder="Introduzca un jugador" size="20">
 	 		<button type="submit"><i class="fa fa-angle-double-right"></i></button>
 	 	</form>
-         
+       <c:if test = "${user.isEsAdmin() == true}"><p>ES ADMIN</p></c:if>
+         <c:out value="${user.getUserName()}"/>
         <div class="modal-box" style="margin:auto">
         	<button type="button" class="btn btn-primary btn-lg show-modal" style="background-color:#117A65; color:white; margin:auto;width:170px; height:60px"data-toggle="modal" data-target="#login">Iniciar sesion</button>
         
@@ -105,9 +105,10 @@ form.buscar button{
                                 <div class="row" > 
                                 <div class="col-6">
                                 <form  name="login" action="login" method="post" style="margin:auto">
-                                  <input type="text" name="username" class="username form-control" placeholder="Username"/>
+                               	<label for="username">Nombre</label>
+                                  <input type="text" name="username" id="username" class="username form-control" placeholder="Username"/>
                                   <input type="password" name="password" class="password form-control" placeholder="password"/>
-                                 <button type="button" class="btn btn-primary btn-sm" style="background-color:#117A65; color:white; margin:auto;">Login</button>
+                                 <input type="submit" class="btn btn-primary btn-sm" style="background-color:#117A65; color:white; margin:auto;">Login</input>
                                   </form>
                                   </div>
                                   <div class="col-6">
@@ -127,7 +128,11 @@ form.buscar button{
         	
         </div>
         
-	 
+	<form action="login" method="post">
+	<input type="text" name="username">
+	<input type="text" name="password">
+	<input type="submit">
+	</form>
  </div>
  <div id="buscadores">
  	<div class="row">
@@ -158,9 +163,10 @@ for (int i = 0; i<goleadores.size();i++){
 equipos.add(dao2.getTeam(goleadores.get(i).getEquipo()));
 }
 %>
-
-
-
+<%
+					if (1 != 2){%>
+				<p>DIME QUE FUNCIONAS POR FAVOR</p>
+<%}%>
 
 <div class="container-fluid">
 		<div class="cabecera">Tabla de goleadores</div>
@@ -188,9 +194,49 @@ equipos.add(dao2.getTeam(goleadores.get(i).getEquipo()));
 							<td><%=goleadores.get(i).getP_jugados()%></td>
 							<td><%=goleadores.get(i).getP_titular()%></td>
 							<td><%=goleadores.get(i).getGoles()%></td>
-							<td><img src="editar.png" alt="Editar"></img></td>
-						</form>
+							<td>
+                            <div class="modal-box" style="margin:auto">
+                            <button type="button" class="btn btn-primary btn-lg show-modal" style="background-color:#117A65; color:white; margin:auto;width:60px; height:60px" data-toggle="modal" data-target="#editar-button">Editar
+                            </button>
+                            </div>
+                            </td>
+                            </form>
 						</tr>
+                            
+        	
+        
+        	<div id="editar-button"  class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document" >
+            <div class="modal-content clearfix">
+            <div class="modal-body">
+            <div class="row">
+            <div class="col-6">
+            <button data-dismiss="modal" class="close">&times;</button>
+            <form name="solicitudJugador" action="crearSolicitudJugador" method="get">
+            <label for="solicitudJugadorNombre">Nombre:</label>
+            <input type="text" id="solicitudJugadorNombre" name="solicitudJugadorNombre" value="<%=goleadores.get(i).getId()%>" readonly></input>
+            <label for="solicitudJugadorCampo">Campo a modificar:</label>
+            <select id="solicitudJugadorCampo" name="solicitudJugadorCampo">
+            	<option value="nacido">Nacido</option>
+            	<option value="rojas">Rojas</option>
+            	<option value="amarillas">Amarillas</option>
+            	<option value="pjugados">Pjugados</option>
+            	<option value="ptitular">Ptitular</option>
+                <option value="goles">Goles</option>
+                <option value="equipo">Equipo</option>
+            </select>
+            <label for="solicitudJugadorValorNuevo">Valor nuevo:</label>
+            <input type="text" id="solicitudJugadorValorNuevo" name="solicitudJugadorValorNuevo"></input>
+            <input type="submit" class="btn btn-primary btn-sm" style="background-color:#117A65; color:white; margin:auto;">Enviar</input>
+            </form>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+    			
+        			
 				<%}%>
 			
 			</tbody>

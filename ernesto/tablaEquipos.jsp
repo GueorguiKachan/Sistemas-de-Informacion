@@ -5,6 +5,8 @@
 <%@ page import="es.unizar.sisinf.grp1.model.JugadorVO" %>
 <%@ page import="es.unizar.sisinf.grp1.model.EquipoFacade" %>
 <%@ page import="es.unizar.sisinf.grp1.model.EquipoVO" %>
+<%@ page import="es.unizar.sisinf.grp1.model.UserFacade" %>
+<%@ page import="es.unizar.sisinf.grp1.model.UserVO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
@@ -20,7 +22,6 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
  <style type="text/css">body{background-color:#34495E;}</style>
 <style>
-
 *{
 	box-sizing: border-box;
 }
@@ -166,18 +167,63 @@ form.buscar button{
                 <th></th>
             </tr>
             <tbody>
-            <c:forEach var="equipo" items="${equiposGrupo}">
-                <tr>
-                
-                    <td><a href='jugadoresEquipo?equipo=${equipo.teamName}'><c:out value="${equipo.teamName}" /></a></td>
-                    <td><c:out value="${equipo.numJugadores}" /></td>
-                    <td><c:out value="${equipo.stadium}" /></td>
-                    <td><c:out value="${equipo.capacidad}" /></td>
-                    <td><c:out value="${equipo.cesped}" /></td>
-                    <td><c:out value="${equipo.precio}" /></td>
-                    <td><img src="editar.png" alt="Editar"></img></td>
-           		</tr>
-            </c:forEach>
+            <%
+            
+            List<EquipoVO> equipo= (List<EquipoVO>)request.getAttribute("equiposGrupo");
+					for (int i=0; i<equipo.size();i++){%>
+						<tr>
+						<form action="jugadoresEquipo" method="get">
+							<td><a href='jugadoresEquipo?equipo=<%=equipo.get(i).getTeamName()%>'><c:out value="<%=equipo.get(i).getTeamName()%>" /></a></td>
+		                    <td><c:out value="<%=equipo.get(i).getNumJugadores()%>" /></td>
+		                    <td><c:out value="<%=equipo.get(i).getStadium()%>" /></td>
+		                    <td><c:out value="<%=equipo.get(i).getCapacidad()%>" /></td>
+		                    <td><c:out value="<%=equipo.get(i).getCesped()%>" /></td>
+		                    <td><c:out value="<%=equipo.get(i).getPrecio()%>" /></td>
+							<td>
+                            <div class="modal-box" style="margin:auto">
+                            <button type="button" class="btn btn-primary btn-lg show-modal" style="background-color:#117A65; color:white; margin:auto;width:60px; height:60px" data-toggle="modal" data-target="#editar-grupo">Editar
+                            </button>
+                            </div>
+                            </td>
+                            </form>
+						</tr>
+						
+                            
+        	
+        
+        	<div id="editar-grupo"  class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document" >
+            <div class="modal-content clearfix">
+            <div class="modal-body">
+            <div class="row">
+            <div class="col-6">
+            <button data-dismiss="modal" class="close">&times;</button>
+            <form name="solicitudEquipo" action="crearSolicitudEquipo" method="get">
+            <label for="solicitudEquipoNombre">Nombre:</label>
+            <input type="text" id="solicitudEquipoNombre" name="solicitudEquipoNombre" value="<%=equipo.get(i).getTeamName()%>" readonly></input>
+            <label for="solicitudEquipoCampo">Campo a modificar:</label>
+            <select id="solicitudEquipoCampo" name="solicitudEquipoCampo">
+            	<option value="nacido">Nacido</option>
+            	<option value="rojas">Rojas</option>
+            	<option value="amarillas">Amarillas</option>
+            	<option value="pjugados">Pjugados</option>
+            	<option value="ptitular">Ptitular</option>
+                <option value="goles">Goles</option>
+                <option value="equipo">Equipo</option>
+            </select>
+            <label for="solicitudEquipoValorNuevo">Valor nuevo:</label>
+            <input type="text" id="solicitudEquipoValorNuevo" name="solicitudEquipoValorNuevo"></input>
+            <input type="submit" class="btn btn-primary btn-sm" style="background-color:#117A65; color:white; margin:auto;">Enviar</input>
+            </form>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+    			
+        			
+				<%}%>
             </tbody>
         </table>
     </div>

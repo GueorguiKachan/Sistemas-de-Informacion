@@ -159,7 +159,40 @@ form.buscar button{
   			<label for="equipo">Equipo: <c:out value="${jugador.getEquipo()}" /></label>
             </td>
             <td>
-            <img src="" alt="editar" style="float:right;">
+            <div class="modal-box" style="margin:auto">
+                            <button type="button" class="btn btn-primary btn-lg show-modal" style="background-color:#117A65; color:white; margin:auto;width:60px; height:60px" data-toggle="modal" data-target="#editar-button">Editar
+                            </button>
+                            </div>
+                            <div id="editar-button"  class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document" >
+            <div class="modal-content clearfix">
+            <div class="modal-body">
+            <div class="row">
+            <div class="col-6">
+            <button data-dismiss="modal" class="close">&times;</button>
+            <form name="solicitudJugador" action="crearSolicitudJugador" method="get">
+            <label for="solicitudJugadorNombre">Nombre:</label>
+            <input type="text" id="solicitudJugadorNombre" name="solicitudJugadorNombre" value="${jugador.getId()}" readonly></input>
+            <label for="solicitudJugadorCampo">Campo a modificar:</label>
+            <select id="solicitudJugadorCampo" name="solicitudJugadorCampo">
+            	<option value="nacido">Nacido</option>
+            	<option value="rojas">Rojas</option>
+            	<option value="amarillas">Amarillas</option>
+            	<option value="pjugados">Pjugados</option>
+            	<option value="ptitular">Ptitular</option>
+                <option value="goles">Goles</option>
+                <option value="equipo">Equipo</option>
+            </select>
+            <label for="solicitudJugadorValorNuevo">Valor nuevo:</label>
+            <input type="text" id="solicitudJugadorValorNuevo" name="solicitudJugadorValorNuevo"></input>
+            <input type="submit" class="btn btn-primary btn-sm" style="background-color:#117A65; color:white; margin:auto;">Enviar</input>
+            </form>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
             </td>
             </tr>
             </table>
