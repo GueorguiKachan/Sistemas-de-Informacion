@@ -50,12 +50,19 @@ public class ComprobacionUsuariosServlet extends HttpServlet {
 					UserVO user = new UserVO(nomUser,password);
 					
 					//System.out.println("El equipo del jugador es " + miJugador.getEquipo());
-		
-					if (dao.validateUser(user)) { // Se traslada a un jsp, para mostrar la info del jugador
+					int res = dao.validateUser(user);
+					if (res != 0) { // Se traslada a un jsp, para mostrar la info del jugador
 						System.out.println("Se ha reconocido al usuario");
 						HttpSession session= request.getSession();
 						session.setAttribute("user",nomUser);
-						request.setAttribute("nomUser", nomUser);
+						if(res == 2) {
+							user.setEsAdmin(true);
+							session.setAttribute("admin", true);
+							System.out.println("Se reconoce como admin");
+						}
+						
+						session.setAttribute("admin", res);
+						//request.setAttribute("nomUser", nomUser);
 						request.getRequestDispatcher("PaginaPrincipal.jsp").forward(request, response);
 						
 					} else { // Se envía al usuario a un html con info únicamente estática, no es necesario jsp

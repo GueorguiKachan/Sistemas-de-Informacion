@@ -18,11 +18,35 @@
   
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
- <style type="text/css">body{background-color:#34495E;}</style>
+ <style type="text/css">body{background-color:#FFFFFF;}</style>
 <style>
 
 *{
 	box-sizing: border-box;
+	font-family: Arial;
+}
+table{
+	border-collapse:collapse; 
+	max-width:100%;
+	min-width:400px;
+	margin:25px 0;
+	border-radius: 5px 5px 0 0;
+	overflow:hidden;
+}
+td,th{
+	border: 1px solid #dddddd;
+	text-align:left;
+	padding:12px 15px;
+}
+th{
+background-color:#009879;
+	color:#FFFFFF;
+}
+tr:nth-child(even){
+	background-color:#dddddd;
+}
+tbody tr:last-of-type{
+	border-botton: 2px solid #009879;
 }
 form.buscar button{
 	
@@ -74,6 +98,7 @@ form.buscar button{
     border: none;
 }
 
+
 </style>
 </head>
 <body>
@@ -81,16 +106,11 @@ form.buscar button{
   <div class="row">
 	  
 	  	<img alt="Imagen" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2SeLFs7dKpRTLT5ljvM8vY0V0mte9-lHD_LQuJt5YcIWi9xI&s" style="dispaly:flex;margin:0px 0px 20px 20px;width:170px; heigth:80px;">
-	  
 	 
-	  	<form name="jugador" action="procesarForm.do" method="get" style="display:flex;margin:auto;max-width:210px;height:60px">
-	  		<input type="text" name="buscar" placeholder="Introduzca un jugador" size="20">
-	 		<button type="submit"><i class="fa fa-angle-double-right"></i></button>
-	 	</form>
          
         <% if(session.getAttribute("user") == null){%>
 	 	<div class="modal-box" style="margin:auto">
-        	<button type="button" class="btn btn-primary btn-lg show-modal" style="background-color:#117A65; color:white; margin:auto"data-toggle="modal" data-target="#login">Iniciar sesion</button>
+        	<button type="button" class="btn btn-primary btn-lg show-modal" style="background-color:#117A65; float:right; color:white; margin:auto;"data-toggle="modal" data-target="#login">Iniciar sesion</button>
         
         	<div id="login"  class="modal fade" tabindex="-1" role="dialog"  >
     			<div class="modal-dialog" role="document" >
@@ -128,7 +148,17 @@ form.buscar button{
         	
         </div>
         <% }else{%>
-        <div class="modal-box" style="margin:auto;">
+        <% if(session.getAttribute("admin") != null){%>
+        	<div style="margin:auto">
+        <button type="button" class="btn btn-primary " style="background-color:#009879; color:white; margin:auto;">Notificacion</button>
+        
+        </div>
+        <% }%>
+        <div style="margin:auto">
+        <button type="button" class="btn btn-primary " style="background-color:#009879; color:white; margin:auto;"><c:out value="${sessionScope.user}"/></button>
+        
+        </div>
+        <div class="modal-box" style="margin:auto">
         	<button type="button" class="btn btn-primary btn-lg show-modal" style="background-color:#34495E; color:white; margin:auto;"data-toggle="modal" data-target="#login">Salir</button>
         
         	<div id="login"  class="modal fade" tabindex="-1" role="dialog"  >
@@ -162,7 +192,7 @@ form.buscar button{
  </div>
  <div id="buscadores">
  	<div class="row">
- 	<form name="buscar" action="listaEquipos" method="get" style="margin:auto;display:flex;max-width:210px">
+ 	<form name="buscar" action="equiposGrupo" method="get" style="margin:auto;display:flex;max-width:210px">
 	  		<input type="text" name="grupo"  placeholder="Introduzca un grupo" size="17">
 	 		<button type="submit"><i class="fa fa-angle-double-right"></i></button>
 	</form>
@@ -181,40 +211,50 @@ form.buscar button{
 
 
 <div class="container-fluid">
-		<div class="tabla">Tabla de goleadores</div>
-	</div>
+		
+	
 	<div class="table-responsive">
 		<table class="table table-striped table-hover mx-auto w-auto">
+			<caption>Tabla de goleadores</caption>
 			<tr>
 				<th>Nombre<img src="" alt="" style="float:right;"></img></th>
+				<th>Año<img src="" alt="" style="float:right;"></th>
 				<th>Equipo<img src="" alt="" style="float:right;"></th>
-				<th>Grupo<img src="" alt="" style="float:right;"></th>
 				<th>P.Jugados<img src="" alt="" style="float:right;"></th>
 				<th>P.Titular<img src="" alt="" style="float:right;"></th>
-				<th><img src="goles.png" alt=""></img><img src="" alt="ordenar" style="float:right;"></th>
-				<th></th>
+				<th>Goles<img src="" alt="" style="float:right;"></th>
+				<th>Amarillas<img src="" alt="" style="float:right;"></th>
+				<th>Rojas<img src="" alt="" style="float:right;"></th>
+				
 			</tr>
 			<tbody>
-			<%
-JugadorFacade dao = new JugadorFacade();		
-List<JugadorVO> goleadores = new ArrayList<>();
-goleadores = dao.goleadores();%>
-			<c:forEach var="jugador" items="${goleadores}">
-                <tr>
-                <td><c:out value="${jugador.nombre}" /></td>
-                    <td><c:out value="${jugador.nacido}" /></td>
-                    <td><c:out value="${jugador.equipo}" /></td>
-                    <td><c:out value="${jugador.p_jugados}" /></td>
-                    <td><c:out value="${jugador.p_titular}" /></td>
-                    <td><c:out value="${jugador.goles}" /></td>
-                    <td><c:out value="${jugador.amarillas}" /></td>
-                    <td><c:out value="${jugador.rojas}" /></td>
+	<%
+	JugadorFacade dao = new JugadorFacade();		
+	List<JugadorVO> goleadores = new ArrayList<>();
+	goleadores = dao.goleadores();
+				
+	for(JugadorVO jugador : goleadores)
+	{
+	%>
+    <tr>
+      <td><%=jugador.getNombre()%></td>
+      <td><%=jugador.getNacido()%></td>
+      <td><%=jugador.getEquipo()%></td>
+      <td><%=jugador.getP_jugados()%></td>
+      <td><%=jugador.getP_titular()%></td>
+      <td><%=jugador.getGoles()%></td>
+      <td><%=jugador.getAmarillas()%></td>
+      <td><%=jugador.getRojas()%></td>
            		</tr>
-            </c:forEach>
+        <%
 
-			
+}
+%>
+    
+	
 			</tbody>
 		</table>
+	</div>
 	</div>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>

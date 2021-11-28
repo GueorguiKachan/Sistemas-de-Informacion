@@ -17,7 +17,7 @@ import es.unizar.sisinf.grp1.model.JugadorVO;
 /**
  * Servlet implementation class BusquedaJugadorSerlvet
  */
-@WebServlet(description = "Servlet de busqueda de jugadores", urlPatterns = { "/buscaJugador" })
+@WebServlet(description = "Servlet de busqueda de jugadores", urlPatterns = { "/buscaJugador","/jugadoresEquipo" })
 public class BusquedaJugadorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

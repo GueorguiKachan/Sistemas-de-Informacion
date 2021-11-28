@@ -19,8 +19,8 @@ public class UserFacade {
 		@param id Identificador del registro buscado * 
 		@returnObjeto DemoVO con el identificador buscado, o null si no seencuentra 
 	*/
-	public boolean validateUser(UserVO user) { 
-		boolean result = false;
+	public int validateUser(UserVO user) { 
+		int result = 0; // 0 no es user, 1 es user, 2 es admin
 		Connection conn = null;
 		
 		try {
@@ -45,11 +45,17 @@ public class UserFacade {
 				// Comparamos contraseÃ±as
 				findRs.next();
 				String dbpwd = findRs.getString("password");
+				boolean admin = findRs.getBoolean("esAdmin");
 				if (dbpwd.contentEquals(user.getPassword())) {
-					result = true;
+					if(admin) {
+					result = 2;
+					}
+					else {
+					result = 1;
+					}
 				}
 			} else { 
-				result = false;  
+				result = 0;  
 			} 
 			
 			// liberamos los recursos utilizados
