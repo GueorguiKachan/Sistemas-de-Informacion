@@ -1,31 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="es.unizar.sisinf.grp1.model.JugadorFacade" %>
-<%@ page import="es.unizar.sisinf.grp1.model.JugadorVO" %>
-<%@ page import="es.unizar.sisinf.grp1.model.EquipoFacade" %>
-<%@ page import="es.unizar.sisinf.grp1.model.EquipoVO" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Transfermarkt Aragon</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Document</title>
-  
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
- <style type="text/css">body{background-color:#34495E;}</style>
+<style type="text/css">body{background-color:#34495E;}</style>
 <style>
-
 *{
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 form.buscar button{
-	
+    
   float: right;
   width: 20%;
   
@@ -39,10 +31,10 @@ form.buscar button{
 }
   
   .cabecera{
-	background-color: #CCD1D1;
-	padding:10px 15px 15px 10px ;
-
+    background-color: #CCD1D1;
+    padding:10px 15px 15px 10px ;
 }
+
 .show-modal{
     color: #fff;
     background: linear-gradient(to right, #33a3ff, #0675cf, #49a6fd);
@@ -79,16 +71,15 @@ form.buscar button{
 <body>
 <div class="cabecera">
   <div class="row">
-	  
-	  	<img alt="Imagen" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2SeLFs7dKpRTLT5ljvM8vY0V0mte9-lHD_LQuJt5YcIWi9xI&s" style="dispaly:flex;margin:0px 0px 20px 20px;width:170px; heigth:80px;">
-	  
-	 
-	  	<form name="jugador" action="procesarForm.do" method="get" style="display:flex;margin:auto;max-width:210px;height:60px">
-	  		<input type="text" name="buscar" placeholder="Introduzca un jugador" size="20">
-	 		<button type="submit"><i class="fa fa-angle-double-right"></i></button>
-	 	</form>
-         
-        <% if(session.getAttribute("user") == null){%>
+      
+        <img alt="Imagen" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2SeLFs7dKpRTLT5ljvM8vY0V0mte9-lHD_LQuJt5YcIWi9xI&s" style="dispaly:flex;margin:0px 0px 20px 20px;width:170px; heigth:80px;">
+      
+     
+        <form name="jugador" action="procesarForm.do" method="get" style="display:flex;margin:auto;max-width:210px;height:60px">
+            <input type="text" name="buscar" placeholder="Introduzca un jugador" size="20">
+            <button type="submit"><i class="fa fa-angle-double-right"></i></button>
+        </form>
+ <% if(session.getAttribute("user") == null){%>
 	 	<div class="modal-box" style="margin:auto">
         	<button type="button" class="btn btn-primary btn-lg show-modal" style="background-color:#117A65; color:white; margin:auto"data-toggle="modal" data-target="#login">Iniciar sesion</button>
         
@@ -157,51 +148,43 @@ form.buscar button{
         	
         </div>
         <% }%>
-        
-	 
+     
  </div>
  <div id="buscadores">
- 	<div class="row">
- 	<form name="buscar" action="listaEquipos" method="get" style="margin:auto;display:flex;max-width:210px">
-	  		<input type="text" name="grupo"  placeholder="Introduzca un grupo" size="17">
-	 		<button type="submit"><i class="fa fa-angle-double-right"></i></button>
-	</form>
-	<form name="buscar" action="jugadoresEquipo" method="get" style="margin:auto;display:flex;max-width:210px">
-	  		<input type="text" name="equipo"  placeholder="Introduzca un equipo" size="17">
-	 		<button type="submit"><i class="fa fa-angle-double-right"></i></button>
-	</form>
-	<form name="buscar" action="buscaJugador"  method="get" style="margin:auto;display:flex;max-width:210px">
-	  		<input type="text" name="nombre"  placeholder="Introduzca un jugador" size="17">
-	 		<button type="submit"><i class="fa fa-angle-double-right"></i></button>
-	</form>
-	</div>
+    <div class="row">
+    <form name="buscar" action="listaEquipos" method="get" style="margin:auto;display:flex;max-width:210px">
+            <input type="text" name="grupo"  placeholder="Introduzca un grupo" size="17">
+            <button type="submit"><i class="fa fa-angle-double-right"></i></button>
+    </form>
+    <form name="buscar" action="jugadoresEquipo" method="get" style="margin:auto;display:flex;max-width:210px">
+            <input type="text" name="equipo"  placeholder="Introduzca un equipo" size="17">
+            <button type="submit"><i class="fa fa-angle-double-right"></i></button>
+    </form>
+    <form name="buscar" action="buscaJugador"  method="get" style="margin:auto;display:flex;max-width:210px">
+            <input type="text" name="nombre"  placeholder="Introduzca un jugador" size="17">
+            <button type="submit"><i class="fa fa-angle-double-right"></i></button>
+    </form>
+    </div>
  </div>
- 
 </div>
 
-
-<div class="container-fluid">
-		<div class="tabla">Tabla de goleadores</div>
-	</div>
-	<div class="table-responsive">
-		<table class="table table-striped table-hover mx-auto w-auto">
-			<tr>
-				<th>Nombre<img src="" alt="" style="float:right;"></img></th>
-				<th>Equipo<img src="" alt="" style="float:right;"></th>
-				<th>Grupo<img src="" alt="" style="float:right;"></th>
-				<th>P.Jugados<img src="" alt="" style="float:right;"></th>
-				<th>P.Titular<img src="" alt="" style="float:right;"></th>
-				<th><img src="goles.png" alt=""></img><img src="" alt="ordenar" style="float:right;"></th>
-				<th></th>
-			</tr>
-			<tbody>
-			<%
-JugadorFacade dao = new JugadorFacade();		
-List<JugadorVO> goleadores = new ArrayList<>();
-goleadores = dao.goleadores();%>
-			<c:forEach var="jugador" items="${goleadores}">
+<div class="table-responsive-sm">
+        <table class="table-striped">
+            <tr>
+                <th>Nombre<img src=""  style="float:right; color:white;"></img></th>
+                <th>Edad<img src=""  style="float:right;color:white;"></th>
+                <th>Equipo<img src=""  style="float:right;color:white;"></th>
+                <th>P.Jugados<img src=""  style="float:right;color:white;"></th>
+                <th>P.Titular<img src=""  style="float:right;color:white;"></th>
+                <th>Goles<img src=""  style="float:right;color:white;"></th>
+                <!--<th><img src="goles.png" alt="Goles"></img><img src="" alt="ordenar" style="float:right;"></th>-->
+                <th>Amarillas<img src="" style="float:right;color:white;"></th>
+                <th>Rojas<img src=""  style="float:right;color:white;"></th>
+                <th></th>
+            </tr>
+            <tbody>
                 <tr>
-                <td><c:out value="${jugador.nombre}" /></td>
+                    <td><c:out value="${jugador.nombre}" /></td>
                     <td><c:out value="${jugador.nacido}" /></td>
                     <td><c:out value="${jugador.equipo}" /></td>
                     <td><c:out value="${jugador.p_jugados}" /></td>
@@ -209,16 +192,12 @@ goleadores = dao.goleadores();%>
                     <td><c:out value="${jugador.goles}" /></td>
                     <td><c:out value="${jugador.amarillas}" /></td>
                     <td><c:out value="${jugador.rojas}" /></td>
-           		</tr>
-            </c:forEach>
-
-			
-			</tbody>
-		</table>
-	</div>
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+                   <!-- <td><img src="editar.png" alt="Editar"></img></td>-->
+            	</tr>
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
-
 </html> 

@@ -5,9 +5,11 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import es.unizar.sisinf.grp1.model.EquipoFacade;
 import es.unizar.sisinf.grp1.model.EquipoVO;
@@ -51,9 +53,10 @@ public class ComprobacionUsuariosServlet extends HttpServlet {
 		
 					if (dao.validateUser(user)) { // Se traslada a un jsp, para mostrar la info del jugador
 						System.out.println("Se ha reconocido al usuario");
-
+						HttpSession session= request.getSession();
+						session.setAttribute("user",nomUser);
 						request.setAttribute("nomUser", nomUser);
-						request.getRequestDispatcher("logged.jsp").forward(request, response);
+						request.getRequestDispatcher("PaginaPrincipal.jsp").forward(request, response);
 						
 					} else { // Se envía al usuario a un html con info únicamente estática, no es necesario jsp
 						response.sendRedirect("jugadorInexistente.html"); // Cambiar esta pagina
@@ -77,13 +80,21 @@ public class ComprobacionUsuariosServlet extends HttpServlet {
 						System.out.println("Se ha registrado al usuario");
 
 						request.setAttribute("nomUser", nomUser);
-						request.getRequestDispatcher("logged.jsp").forward(request, response);
+						HttpSession session= request.getSession(); 
+						//						Cookie iniSesion = new Cookie("nombreLogin",nomUser);
+//						response.addCookie(iniSesion);
+//						iniSesion.setMaxAge(30*60);
+						session.setAttribute("user",nomUser);
+//						request.getSession().setAttribute("user",nomUser);
+//						response.sendRedirect("logged.jsp");
+						request.getRequestDispatcher("PaginaPrincipal.jsp").forward(request, response);
 					} else { // Se envía al usuario a un html con info únicamente estática, no es necesario jsp
 						response.sendRedirect("jugadorInexistente.html"); // Cambiar esta pagina
 					}
 				}
 				break;
 			case "/salir":
+				request.getSession().invalidate();
 				response.sendRedirect("PaginaPrincipal.jsp");
 		}
 	}
