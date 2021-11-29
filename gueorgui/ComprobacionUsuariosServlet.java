@@ -66,7 +66,8 @@ public class ComprobacionUsuariosServlet extends HttpServlet {
 						request.getRequestDispatcher("PaginaPrincipal.jsp").forward(request, response);
 						
 					} else { // Se envía al usuario a un html con info únicamente estática, no es necesario jsp
-						response.sendRedirect("jugadorInexistente.html"); // Cambiar esta pagina
+						request.setAttribute("fail",true);
+						request.getRequestDispatcher("PaginaPrincipal.jsp").forward(request, response);
 					}
 					break;
 				}

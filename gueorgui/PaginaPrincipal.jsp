@@ -102,6 +102,18 @@ form.buscar button{
 </style>
 </head>
 <body>
+<%if(request.getAttribute("fail") != null){ %>
+<div id="popup1" class="overlay">
+    <div class="popup" >
+        <h2>Here i am</h2>
+        <!-- This hides it. -->
+        <a class="close" href="#popup1">×</a>
+        <div class="content">
+            Thank to pop me out of that button, but now I'm done so you can close this window.
+        </div>
+    </div>
+</div>
+ <%} %>
 <div class="cabecera">
   <div class="row">
 	  
@@ -109,7 +121,8 @@ form.buscar button{
 	 
          
         <% if(session.getAttribute("user") == null){%>
-	 	<div class="modal-box" style="margin:auto">
+        
+	 	<div class="modal-box" style="margin:auto; max-width:100%">
         	<button type="button" class="btn btn-primary btn-lg show-modal" style="background-color:#117A65; float:right; color:white; margin:auto;"data-toggle="modal" data-target="#login">Iniciar sesion</button>
         
         	<div id="login"  class="modal fade" tabindex="-1" role="dialog"  >
@@ -128,7 +141,7 @@ form.buscar button{
                                 <form  name="login" action="login" method="post" style="margin:auto">
                                   <input type="text" name="username" class="username form-control" placeholder="Username"/>
                                   <input type="password" name="password" class="password form-control" placeholder="password"/>
-                                 <button type="submit" class="btn btn-primary btn-sm" style="background-color:#117A65; color:white; margin:auto;">Login</button>
+                                 <button type="submit" class="btn btn-primary btn-sm" style="background-color:#117A65; color:white; margin:5px 5px;">Login</button>
                                   </form>
                                   </div>
                                   <div class="col-6">
@@ -150,12 +163,12 @@ form.buscar button{
         <% }else{%>
         <% if(session.getAttribute("admin") != null){%>
         	<div style="margin:auto">
-        <button type="button" class="btn btn-primary " style="background-color:#009879; color:white; margin:auto;">Notificacion</button>
+        <button type="button" class="btn btn-primary " style="background-color:#669999; color:white; margin:auto;">Notificacion</button>
         
         </div>
         <% }%>
         <div style="margin:auto">
-        <button type="button" class="btn btn-primary " style="background-color:#009879; color:white; margin:auto;"><c:out value="${sessionScope.user}"/></button>
+        <button type="button" class="btn btn-primary " style="background-color:#669999; color:white; margin:auto;"><c:out value="${sessionScope.user}"/></button>
         
         </div>
         <div class="modal-box" style="margin:auto">
@@ -245,6 +258,17 @@ form.buscar button{
       <td><%=jugador.getGoles()%></td>
       <td><%=jugador.getAmarillas()%></td>
       <td><%=jugador.getRojas()%></td>
+    <% if(session.getAttribute("user") != null){%>      
+       <td> <form name="buscar" action="buscaJugador"  method="get" style="margin:auto;display:flex;max-width:210px">
+       			<input type="hidden" name="nombre"value="<%=jugador.getNombre()%>"/>
+       			<button type="submit"><i class="fas fa-edit"></i></button> 
+       			</form> </td> 
+       			<!-- Otra forma de hacerlo seria 
+       			<td> <form name="buscar" action="buscaJugador?nombre=<!!!!!%=jugador.getNombre()%>"  method="post" style="margin:auto;display:flex;max-width:210px">
+       			<button type="submit"><i class="fas fa-edit"></i></button> 
+       			</form> </td> 
+       			Usando obligatoriamente el metodo post-->   		
+         <% }%>
            		</tr>
         <%
 

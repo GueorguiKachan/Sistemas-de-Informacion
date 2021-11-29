@@ -56,6 +56,7 @@ public class BusquedaJugadorServlet extends HttpServlet {
 						response.sendRedirect("jugadorInexistente.html"); 
 					}
 				}
+				break;
 			case "/jugadoresEquipo":
 				System.out.println("Los judadores del equipo");
 				List<JugadorVO> jugadores = new JugadorFacade().mismoEquipo(request.getParameter("equipo"));

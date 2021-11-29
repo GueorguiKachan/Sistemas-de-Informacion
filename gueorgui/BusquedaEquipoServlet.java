@@ -37,9 +37,10 @@ public class BusquedaEquipoServlet extends HttpServlet {
 		switch(action) {
 		case "/equiposGrupo":
 			List<EquipoVO> dao = new EquipoFacade().todosGrupo(request.getParameter("grupo"));		
-
+			System.out.println("El equipo que se busca es " + request.getParameter("grupo"));
 			request.setAttribute("equiposGrupo",dao);
 			request.getRequestDispatcher("tablaEquipos.jsp").forward(request, response);
+			break;
 		case "/busquedaEquipo":
 			String nom = request.getParameter("equipo"); //tiene q coincidir equipo
 			System.out.println("El equipo que se busca es " + nom);
