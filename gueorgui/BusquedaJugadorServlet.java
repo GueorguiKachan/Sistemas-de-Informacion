@@ -40,7 +40,8 @@ public class BusquedaJugadorServlet extends HttpServlet {
 				String nom = request.getParameter("nombre");
 				System.out.println("El nombre que se busca es " + nom);
 				if (nom == null) {
-					response.sendRedirect("jugadorInexistente.hmtl");
+					request.setAttribute("fail","Introduzca un jugador");
+					request.getRequestDispatcher("PaginaPrincipal.jsp").forward(request, response);
 				} else {
 					System.out.println("Se va a buscar");
 		
@@ -53,16 +54,28 @@ public class BusquedaJugadorServlet extends HttpServlet {
 						request.setAttribute("jugador",miJugador);
 						request.getRequestDispatcher("muestraJugador.jsp").forward(request, response);
 					} else { // Se envía al usuario a un html con info únicamente estática, no es necesario jsp
-						response.sendRedirect("jugadorInexistente.html"); 
+						System.out.println("No se ha encontrado");
+						request.setAttribute("fail","El jugador no existe");
+						request.getRequestDispatcher("PaginaPrincipal.jsp").forward(request, response);
 					}
 				}
 				break;
 			case "/jugadoresEquipo":
-				System.out.println("Los judadores del equipo");
-				List<JugadorVO> jugadores = new JugadorFacade().mismoEquipo(request.getParameter("equipo"));
-				request.setAttribute("jugadoresEquipo",jugadores);
-				request.getRequestDispatcher("jugadoresEquipo.jsp").forward(request, response);
-		}
+				if (request.getParameter("equipo") == null) {
+					request.setAttribute("fail","Introduzca un jugador");
+					request.getRequestDispatcher("PaginaPrincipal.jsp").forward(request, response);
+				} else {
+					System.out.println("Los jugadores del equipo");
+					List<JugadorVO> jugadores = new JugadorFacade().mismoEquipo(request.getParameter("equipo"));
+					if(jugadores != null) {
+					request.setAttribute("jugadoresEquipo",jugadores);
+					request.getRequestDispatcher("jugadoresEquipo.jsp").forward(request, response);
+					}else {
+						request.setAttribute("fail","El jugador no existe");
+						request.getRequestDispatcher("PaginaPrincipal.jsp").forward(request, response);
+					}
+				}
+			}
 	}
 
 	/**

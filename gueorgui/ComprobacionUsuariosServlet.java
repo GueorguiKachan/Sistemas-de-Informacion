@@ -44,7 +44,8 @@ public class ComprobacionUsuariosServlet extends HttpServlet {
 				String password = request.getParameter("password");
 				System.out.println("El usuario que se busca es " + nomUser);
 				if (nomUser == null || password == null) {
-					response.sendRedirect("jugadorInexistente.hmtl"); // Esta pagina cambiarla
+					request.setAttribute("fail","Introduzca usuario y contraseña");
+					request.getRequestDispatcher("PaginaPrincipal.jsp").forward(request, response);
 				} else {
 					System.out.println("Se va a buscar");
 					UserVO user = new UserVO(nomUser,password);
@@ -61,12 +62,13 @@ public class ComprobacionUsuariosServlet extends HttpServlet {
 							System.out.println("Se reconoce como admin");
 						}
 						
-						session.setAttribute("admin", res);
+						//session.setAttribute("admin", res);
 						//request.setAttribute("nomUser", nomUser);
 						request.getRequestDispatcher("PaginaPrincipal.jsp").forward(request, response);
 						
 					} else { // Se envía al usuario a un html con info únicamente estática, no es necesario jsp
-						request.setAttribute("fail",true);
+						
+						request.setAttribute("fail","El usuario introducido no existe");
 						request.getRequestDispatcher("PaginaPrincipal.jsp").forward(request, response);
 					}
 					break;
@@ -77,7 +79,8 @@ public class ComprobacionUsuariosServlet extends HttpServlet {
 				nomUser = request.getParameter("username");
 				password = request.getParameter("password");
 				if (nomUser == null || password == null) {
-					response.sendRedirect("jugadorInexistente.hmtl"); // Esta pagina cambiarla
+					request.setAttribute("fail","Introduzca usuario y contraseña");
+					request.getRequestDispatcher("PaginaPrincipal.jsp").forward(request, response);
 				} else {
 					System.out.println("Se va a registrar");
 					UserVO user = new UserVO(nomUser,password);
@@ -97,7 +100,8 @@ public class ComprobacionUsuariosServlet extends HttpServlet {
 //						response.sendRedirect("logged.jsp");
 						request.getRequestDispatcher("PaginaPrincipal.jsp").forward(request, response);
 					} else { // Se envía al usuario a un html con info únicamente estática, no es necesario jsp
-						response.sendRedirect("jugadorInexistente.html"); // Cambiar esta pagina
+						request.setAttribute("fail","El usuario introducido ya existe");
+						request.getRequestDispatcher("PaginaPrincipal.jsp").forward(request, response);
 					}
 				}
 				break;

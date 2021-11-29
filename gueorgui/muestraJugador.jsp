@@ -71,16 +71,20 @@ form.buscar button{
 </style>
 </head>
 <body>
+<%if(request.getAttribute("fail") != null){ %>
+<script type="text/javascript">
+	alert("<%=request.getAttribute("fail")%>")
+</script>
+
+ <%} %>
 <div class="cabecera">
   <div class="row">
       
-        <img alt="Imagen" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2SeLFs7dKpRTLT5ljvM8vY0V0mte9-lHD_LQuJt5YcIWi9xI&s" style="dispaly:flex;margin:0px 0px 20px 20px;width:170px; heigth:80px;">
+       <a href="PaginaPrincipal.jsp">
+	  	<img alt="Imagen" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2SeLFs7dKpRTLT5ljvM8vY0V0mte9-lHD_LQuJt5YcIWi9xI&s" style="dispaly:flex;margin:0px 0px 20px 20px;width:170px; heigth:80px;">
+	   </a>
+         
       
-     
-        <form name="jugador" action="procesarForm.do" method="get" style="display:flex;margin:auto;max-width:210px;height:60px">
-            <input type="text" name="buscar" placeholder="Introduzca un jugador" size="20">
-            <button type="submit"><i class="fa fa-angle-double-right"></i></button>
-        </form>
  <% if(session.getAttribute("user") == null){%>
 	 	<div class="modal-box" style="margin:auto">
         	<button type="button" class="btn btn-primary btn-lg show-modal" style="background-color:#117A65; color:white; margin:auto"data-toggle="modal" data-target="#login">Iniciar sesion</button>

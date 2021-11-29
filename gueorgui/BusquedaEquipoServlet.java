@@ -36,16 +36,28 @@ public class BusquedaEquipoServlet extends HttpServlet {
 		
 		switch(action) {
 		case "/equiposGrupo":
-			List<EquipoVO> dao = new EquipoFacade().todosGrupo(request.getParameter("grupo"));		
-			System.out.println("El equipo que se busca es " + request.getParameter("grupo"));
-			request.setAttribute("equiposGrupo",dao);
-			request.getRequestDispatcher("tablaEquipos.jsp").forward(request, response);
-			break;
+			if (request.getParameter("grupo") == null) {
+				request.setAttribute("fail","Introduzca el nombre de un grupo");
+				request.getRequestDispatcher("PaginaPrincipal.jsp").forward(request, response);
+			}else {
+				List<EquipoVO> dao = new EquipoFacade().todosGrupo(request.getParameter("grupo"));		
+				if(dao != null) {
+					System.out.println("El equipo que se busca es " + request.getParameter("grupo"));
+					request.setAttribute("equiposGrupo",dao);
+					request.getRequestDispatcher("tablaEquipos.jsp").forward(request, response);
+				}else {
+					System.out.println("No se ha encontrado el grupo");
+					request.setAttribute("fail","El grupo no existe");
+					request.getRequestDispatcher("PaginaPrincipal.jsp").forward(request, response);
+				}
+			}
+				break;
 		case "/busquedaEquipo":
 			String nom = request.getParameter("equipo"); //tiene q coincidir equipo
 			System.out.println("El equipo que se busca es " + nom);
 			if (nom == null) {
-				response.sendRedirect("jugadorInexistente.hmtl");
+				request.setAttribute("fail","Introduzca el nombre de un equipo");
+				request.getRequestDispatcher("PaginaPrincipal.jsp").forward(request, response);
 			} else {
 				System.out.println("Se va a buscar");
 				
@@ -56,7 +68,8 @@ public class BusquedaEquipoServlet extends HttpServlet {
 					request.setAttribute("equipo",miEquipo);
 					request.getRequestDispatcher("muestraEquipo.jsp").forward(request, response);
 				} else { // Se envía al usuario a un html con info únicamente estática, no es necesario jsp
-					response.sendRedirect("jugadorInexistente.html"); 
+					request.setAttribute("fail","El equipo no existe");
+					request.getRequestDispatcher("PaginaPrincipal.jsp").forward(request, response); 
 				}
 			}
 				

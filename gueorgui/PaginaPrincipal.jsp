@@ -103,22 +103,16 @@ form.buscar button{
 </head>
 <body>
 <%if(request.getAttribute("fail") != null){ %>
-<div id="popup1" class="overlay">
-    <div class="popup" >
-        <h2>Here i am</h2>
-        <!-- This hides it. -->
-        <a class="close" href="#popup1">×</a>
-        <div class="content">
-            Thank to pop me out of that button, but now I'm done so you can close this window.
-        </div>
-    </div>
-</div>
+<script type="text/javascript">
+	alert("<%=request.getAttribute("fail")%>")
+</script>
+
  <%} %>
 <div class="cabecera">
   <div class="row">
-	  
+	  	<a href="PaginaPrincipal.jsp">
 	  	<img alt="Imagen" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2SeLFs7dKpRTLT5ljvM8vY0V0mte9-lHD_LQuJt5YcIWi9xI&s" style="dispaly:flex;margin:0px 0px 20px 20px;width:170px; heigth:80px;">
-	 
+		 </a>
          
         <% if(session.getAttribute("user") == null){%>
         
@@ -148,7 +142,7 @@ form.buscar button{
                                   <form  name="registro" action="registro" method="post" style="margin:auto">
                                    <input type="text" name="username" class="username form-control" placeholder="Username"/>
                                   <input type="password" name="password" class="password form-control" placeholder="password"/>
-                                 <button type="button" class="btn btn-primary btn-sm" style="background-color:#117A65; color:white; margin:auto;">Register</button>
+                                 <button type="submit" class="btn btn-primary btn-sm" style="background-color:#117A65; color:white; margin:auto;">Register</button>
                                 </form>
                                 </div>
                                 </div>

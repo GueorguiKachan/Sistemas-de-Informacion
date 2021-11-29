@@ -109,7 +109,10 @@ form.buscar button{
 <div class="cabecera">
   <div class="row">
 	  
+	  <a href="PaginaPrincipal.jsp">
 	  	<img alt="Imagen" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2SeLFs7dKpRTLT5ljvM8vY0V0mte9-lHD_LQuJt5YcIWi9xI&s" style="dispaly:flex;margin:0px 0px 20px 20px;width:170px; heigth:80px;">
+		 </a>
+         
 	 
          
         <% if(session.getAttribute("user") == null){%>

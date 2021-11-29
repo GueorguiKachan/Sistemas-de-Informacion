@@ -28,11 +28,13 @@ public class JugadorFacade {
 			ps.setString(1, name); // setString asigna el valor del 2º argumento al parámetro que está en la posición del 1º argumento. Sustituye los ? 
 			System.out.println("La query es "+ ps);
 			ResultSet rset = ps.executeQuery();
-			rset.next(); // Next mueve el cursor una fila adelante de su posición actual
 			
-			//getString-getInteger devuelven el valor que haya en la columna indicada o bien por un número o bien por su nombre
-			jugador = new JugadorVO(rset.getInt("id"),rset.getInt("pJugados"),rset.getInt("pTitular"),rset.getString("nombre"),rset.getInt("goles"),
-								rset.getInt("nacido"),rset.getInt("rojas"),rset.getInt("amarillas"),rset.getString("equipo"));
+			if(rset.next()) { // Next mueve el cursor una fila adelante de su posición actual
+			
+				//getString-getInteger devuelven el valor que haya en la columna indicada o bien por un número o bien por su nombre
+				jugador = new JugadorVO(rset.getInt("id"),rset.getInt("pJugados"),rset.getInt("pTitular"),rset.getString("nombre"),rset.getInt("goles"),
+									rset.getInt("nacido"),rset.getInt("rojas"),rset.getInt("amarillas"),rset.getString("equipo"));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -43,7 +45,7 @@ public class JugadorFacade {
 	
 	public List<JugadorVO> mismoEquipo(String team) {
 		Connection conn = null;
-		List<JugadorVO> jugadores = new ArrayList<>();
+		List<JugadorVO> jugadores =null;// new ArrayList<>();
 		JugadorVO jugador = null;
 		System.out.println("Se llega al dao");
 		try {
@@ -55,6 +57,9 @@ public class JugadorFacade {
 			ps.setString(1, team); // setString asigna el valor del 2º argumento al parámetro que está en la posición del 1º argumento. Sustituye los ? 
 			System.out.println("La query es "+ ps);
 			ResultSet rset = ps.executeQuery();
+			if(rset.isBeforeFirst()) {
+				jugadores = new ArrayList<>();
+			}
 			while(rset.next()) { // Next mueve el cursor una fila adelante de su posición actual
 				jugador = new JugadorVO(rset.getInt("id"),rset.getInt("pJugados"),rset.getInt("pTitular"),rset.getString("nombre"),rset.getInt("goles"),
 						rset.getInt("nacido"),rset.getInt("rojas"),rset.getInt("amarillas"),rset.getString("equipo"));
