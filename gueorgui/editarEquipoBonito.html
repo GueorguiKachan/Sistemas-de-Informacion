@@ -1,0 +1,52 @@
+ <% if(session.getAttribute("user") != null){%>      
+	       <td>
+                <div class="modal-box" style="margin:auto">
+                <button type="button" class="fas fa-edit" data-toggle="modal" data-target="#editar-equipo"></button>
+                </div>
+                </td>
+                
+                <div id="editar-equipo"  class="modal fade" tabindex="-1" role="dialog">
+	            <div class="modal-dialog" role="document" >
+	            <div class="modal-content clearfix">
+	            <div class="modal-body">
+	            <button data-dismiss="modal" class="close">&times;</button>
+	            <div class="row">
+	            <div class="col-12" style="text-align:left"> <!--!!!!! Alinear a la izda-->
+	            <form name="solicitudEquipo" action="crearSolicitudEquipo" method="get">
+<!--!!!!!-->	<div class="form-group">
+	            <label for="solicitudEquipoNombre">Nombre:</label>
+<!--!!!!!-->	<input type="hidden" id="solicitudEquipoNombre" name="solicitudEquipoNombre" value="<%=equipo.getId()%>" readonly></input>
+	            <input type="text" value="<%=equipo.getNombre()%>" readonly></input>
+<!--!!!!!-->	</div> <!--!!!!! Se mete cada pareja label-input en estos div-->
+	            <div class="form-group">
+	            <label for="solicitudEquipoCampo">Campo a modificar:</label>
+	            <select id="solicitudEquipoCampo" name="solicitudEquipoCampo">
+	            	<option value="nacido">Nacido</option>
+	            	<option value="rojas">Rojas</option>
+	            	<option value="amarillas">Amarillas</option>
+	            	<option value="pjugados">Pjugados</option>
+	            	<option value="ptitular">Ptitular</option>
+	                <option value="goles">Goles</option>
+	                <option value="equipo">Equipo</option>
+	            </select>
+	            </div>
+	            <div class="form-group">
+	            <label for="solicitudEquipoValorNuevo">Valor nuevo:</label>
+	            <input type="text" id="solicitudEquipoValorNuevo" name="solicitudEquipoValorNuevo"></input>
+	            </div>
+<!--!!!!!-->  <div class="form-group" style="text-align:center"> <!--!!!!! Boton centrado-->
+	            <input type="submit" class="btn btn-primary btn-sm" style="background-color:#117A65; color:white; margin:auto;" value="Enviar"></input>
+	            </div>
+	            </form>
+	            </div>
+	            </div>
+	            </div>
+	            </div>
+	            </div>
+	            </div>
+	       			<!-- Otra forma de hacerlo seria 
+	       			<td> <form name="buscar" action="buscaJugador?nombre=<!!!!!%=jugador.getNombre()%>"  method="post" style="margin:auto;display:flex;max-width:210px">
+	       			<button type="submit"><i class="fas fa-edit"></i></button> 
+	       			</form> </td> 
+	       			Usando obligatoriamente el metodo post-->   		
+	         <% }%>
