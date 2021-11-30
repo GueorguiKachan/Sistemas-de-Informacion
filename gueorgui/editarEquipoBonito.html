@@ -15,8 +15,7 @@
 	            <form name="solicitudEquipo" action="crearSolicitudEquipo" method="get">
 <!--!!!!!-->	<div class="form-group">
 	            <label for="solicitudEquipoNombre">Nombre:</label>
-<!--!!!!!-->	<input type="hidden" id="solicitudEquipoNombre" name="solicitudEquipoNombre" value="<%=equipo.getId()%>" readonly></input>
-	            <input type="text" value="<%=equipo.getNombre()%>" readonly></input>
+<!--!!!!!-->	<input type="text" id="solicitudEquipoNombre" name="solicitudEquipoNombre" value="<%=equipo.getTeamName()%>" readonly></input>
 <!--!!!!!-->	</div> <!--!!!!! Se mete cada pareja label-input en estos div-->
 	            <div class="form-group">
 	            <label for="solicitudEquipoCampo">Campo a modificar:</label>
